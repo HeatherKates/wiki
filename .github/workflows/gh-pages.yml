@@ -1,4 +1,3 @@
-# .github/workflows/gh-pages.yml
 name: Deploy Hugo site to GitHub Pages
 
 on:
@@ -18,10 +17,10 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.125.4'  # Or match your version
+          hugo-version: '0.125.4'
 
       - name: Build site
-        run: hugo --minify --destination docs
+        run: hugo --minify
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
