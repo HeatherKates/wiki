@@ -9,8 +9,8 @@ design:
 sections:
   - block: hero
     content:
-      title: Weecology's Wiki
-      text: Collaborative documentation for how to navigate life in the lab (and beyond)
+      title: UF Health Cancer Center Bioinformatics' Wiki
+      text: Collaborative documentation for how to navigate bioinformatics with the UFHCC BCB-SR (and beyond!)
       primary_action:
         text: Browse the wiki
         url: /docs/

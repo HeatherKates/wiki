@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Field Work | UFHCC BCB-SR Bioinformatics Wiki</title><link>http://localhost:1313/docs/field-work/</link><atom:link href="http://localhost:1313/docs/field-work/index.xml" rel="self" type="application/rss+xml"/><description>Field Work</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>http://localhost:1313/media/icon_hu_bb893f6dc6eaf6fe.png</url><title>Field Work</title><link>http://localhost:1313/docs/field-work/</link></image><item><title>Portal Data Entry and QA</title><link>http://localhost:1313/docs/field-work/portal-data-entry/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-data-entry/</guid><description>&lt;p>&lt;strong>Open data&lt;/strong> is &lt;em>good&lt;/em> but &lt;strong>clean data&lt;/strong> is &lt;em>better&lt;/em>.&lt;/p>
+&lt;p>Below are guidelines/instructions for entering and QAing each type of data we collect that previous Portal RAs have developed to systematically update and ensure the quality of Portal data.&lt;/p>
+&lt;h2 id="rodent-data">Rodent Data&lt;/h2>
+&lt;p>Ideally, rodent data are entered and QA&amp;rsquo;ed before the next rodent census trip. This ensures no back logs in tasks, and that &lt;a href="https://github.com/weecology/portalcasting" target="_blank" rel="noopener">portalcasting&lt;/a> is able to generate new forecasts based on the latest data point available.&lt;/p>
+&lt;h3 id="data-entry">Data entry&lt;/h3>
+&lt;ul>
+&lt;li>Scan data sheets and deposit on Portal Dropbox folder: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Rodent -&amp;gt; Raw_data -&amp;gt; datasheet_scans -&amp;gt; year. Make sure to rename file to appropriate census period.&lt;/li>
+&lt;li>Enter data and have field technician do the second entry.&lt;/li>
+&lt;li>Open folder with .xls files of the rodent data: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Rodent -&amp;gt; Raw_data -&amp;gt; New_data. Copy a previous one, and rename file with the appropriate census date (Ex. newdatXX.xlsx).&lt;/li>
+&lt;li>Enter rodent data on DE1 tab (field technician enters data on DE2 tab).
+&lt;ul>
+&lt;li>When filling in the year, encode full year value (Ex. Encode 2024 instead of 24).&lt;/li>
+&lt;li>When dragging down repetitive values (e.g., month, day, year, plot), make sure that the values are copied over in the target cells (i.e., make sure that when you drag down, the values are not increasing).&lt;/li>
+&lt;li>Use all caps in all columns.&lt;/li>
+&lt;li>Under the tag column, the usual values are 6-characters long. The characters range from numbers 0-9 and letters A-E.&lt;/li>
+&lt;li>In rows where individuals got &lt;em>new tags&lt;/em>, put an asterisk (*) under note2.&lt;/li>
+&lt;li>Notes of individuals being dead (D), removed (R), or escaped (E) should be put under the column note5.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Download PIT tags (Note: You need a Windows machine with BioTerm installed. The weather station laptop works.)
+&lt;ul>
+&lt;li>Connect the scanner using the USB adapter.&lt;/li>
+&lt;li>Open BioTerm. Make sure the BAUD rate is 9600. Select Open.&lt;/li>
+&lt;li>Using the scanner, press READ, then MENU until it says &amp;ldquo;Stored ID tags&amp;rdquo;. Press the up arrow, then READ. It will ask if you want to send all tags. Press READ. The tags &lt;em>should&lt;/em> appear in the BioTerm text box. You may need to squeeze the adapter into the scanner so you get a really secure connection (the screw is really difficult to turn all the way). In theory you can also type &amp;ldquo;G&amp;rdquo; into the BioTerm text box and the tags will appear.&lt;/li>
+&lt;li>Open the Notepad application. Copy the tags from the BioTerm text box into an empty text file in Notepad.&lt;/li>
+&lt;li>Save the file with the new tags with the census number (tags###.txt) in the Portal Dropbox folder: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Rodent -&amp;gt; Raw_data -&amp;gt; New_data -&amp;gt; tag scans.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Delete old PIT tag scans
+&lt;ul>
+&lt;li>&lt;em>NOTE: This should only occur after you have completed data QA!&lt;/em>&lt;/li>
+&lt;li>Once you have completed all data QA, you will want to delete the previous PIT tag scans from the scanner so they do not get read into next month&amp;rsquo;s tag scans file.&lt;/li>
+&lt;li>Using the scanner, press READ, then MENU unitl it says &amp;ldquo;Stored ID tags.&amp;rdquo; Press the up arrow twice; at this point, the scanner should read &amp;ldquo;Delete tags?&amp;rdquo; with the default set to NO. Press READ to select YES, then press the up arrow.&lt;/li>
+&lt;li>When you check the stored tags, the number should now read 000.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="data-qa">Data QA&lt;/h3>
+&lt;ul>
+&lt;li>In GitHub (remote):&lt;/li>
+&lt;/ul>
+&lt;ul>
+&lt;li>Make sure you have write access to the PortalData repo (ask Glenda about this).&lt;/li>
+&lt;li>clone the repo by following the instructions &lt;a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository" target="_blank" rel="noopener">here&lt;/a>. Note: You only need to do this once.&lt;/li>
+&lt;li>create new branch and rename it to: rodents_censusperiod (Make sure you are in the correct repo: PortalData). Follow instructions &lt;a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository" target="_blank" rel="noopener">here&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;ul>
+&lt;li>
+&lt;p>In RStudio (local):&lt;/p>
+&lt;ul>
+&lt;li>Click File -&amp;gt; New Project -&amp;gt; Existing Directory and browse to where PortalData is saved in your computer and open it&lt;/li>
+&lt;li>In the terminal tab in RStudio, type:
+&lt;ul>
+&lt;li>git pull (assuming you are in the main branch, do this to make sure that you have the latest version of the files)&lt;/li>
+&lt;li>git checkout rodents_censusperiod (make sure you are working on the new branch you just created. The top part of your RStudio should reflect this)
+Note: If updates in the main branch were merged while you are working in your branch, do:&lt;/li>
+&lt;li>git checkout main&lt;/li>
+&lt;li>git pull&lt;/li>
+&lt;li>git checkout rodents_censusperiod&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>In the Files tab in RStudio, go to PortalData -&amp;gt; DataCleaningScripts, and click on new_rodent_data.r.&lt;/li>
+&lt;li>Run code from lines 1 to 11, and update line 18 to the correct census period number.
+Note: If you are using a Windows Machine:
+&lt;ul>
+&lt;li>line 20 (filepath= &amp;ldquo;&amp;rdquo;) should have 2 back slashes after each location (Ex.: filepath= D:\Dropbox\Portal\PORTAL_primary_data\Rodent\Raw_data\New_data)&lt;/li>
+&lt;li>line 22 (newfile=&amp;quot;&amp;quot;), there should be 2 back slashesbefore the word newdat (Ex.: paste(filepath, &amp;lsquo;\newdat&amp;rsquo;, newperiod, &amp;lsquo;.xlsx&amp;rsquo;, sep = &amp;lsquo;&amp;rsquo;))&lt;/li>
+&lt;li>line 23 (scannerfile=&amp;quot;&amp;quot;), there should be 2 back slashes before the phrase tag scans and tags (Ex.: paste(filepath, &amp;lsquo;\tag scans\tags&amp;rsquo;, newperiod, &amp;lsquo;.txt&amp;rsquo;, sep = &amp;lsquo;&amp;rsquo;))&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Run line 29. Corect the .xlsx worksheets until they match.&lt;/li>
+&lt;li>Once the sheets are identical, run lines 36 to 38. If errors pop up, update Excel file and note changes in the red notebook.&lt;/li>
+&lt;li>Run subsequent lines and make necessary changes. Note them in the red notebok. This is so we can track the decisions on the species/sex/etc. IDs that were made. scan previous months&amp;rsquo; corrections to make sure you&amp;rsquo;re not &amp;lsquo;correcting&amp;rsquo; the same individuals back and forth.&lt;/li>
+&lt;li>Save R file.&lt;/li>
+&lt;li>Push to GitHub repo by clicking on the Git tab in RStudio, and selecting the files that were updated (Usually, this includes 2 files: new_rodent_data.r and Portal_rodent.csv).&lt;/li>
+&lt;li>make sure to write an intuitive commit message. Ex.: add rodent census XXX data [minor]).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>In Github:&lt;/p>
+&lt;ul>
+&lt;li>Go to the Weecology PortalData repo and click the message that says a new commit has been pushed by you.&lt;/li>
+&lt;li>Tag Glenda as a reviewer and create a pull request by clicking the create pull request button at the bottom of that page.&lt;/li>
+&lt;li>If it passes all checks/tests,you&amp;rsquo;re good to go! If not, go to the PR (pull request) page and read the details where the error occurred. Fix issues accordingly.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="plant-data">Plant Data&lt;/h2>
+&lt;p>Ideally, plant data are entered and QA&amp;rsquo;ed before the next plant census trip. This ensures no back logs in tasks.&lt;/p>
+&lt;h3 id="data-entry-1">Data entry&lt;/h3>
+&lt;p>&lt;strong>A. Quadrat data&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Scan data sheets and deposit on Portal Dropbox folder: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Plant -&amp;gt; Quadrats -&amp;gt; Dataraw -&amp;gt; Newdata. Make sure to rename file accordingly. (Ex.:Summer20XX.pdf)&lt;/li>
+&lt;li>Make a copy of a previous filled in .xlsx datasheet, clear it, and rename appropriately (Ex.:Summer20XX.xlsx). This ensures that the appropriate data validation settings are in place.&lt;/li>
+&lt;li>Enter data on abundance1 tab. Field technician enters data on abundance2 tab.
+&lt;ul>
+&lt;li>When filling in the year, encode full year value (Ex. Encode 2024 instead of 24).&lt;/li>
+&lt;li>If needed, check the Species List tab for the correct spelling of species ID codes.&lt;/li>
+&lt;li>Refer to the &lt;a href="https://github.com/weecology/PortalData/blob/main/testthat/test-plant_quadrats.R" target="_blank" rel="noopener">test&lt;/a> for appropriate values for each column.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>B. Transect data&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Scan data sheets and deposit on Portal Dropbox folder: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Plant -&amp;gt; TRANSECTS -&amp;gt; DataRaw -&amp;gt; Datasheet_scans. Make sure to rename file accordingly. (Ex.:Summer20XX_transects.pdf)&lt;/li>
+&lt;li>Go to: Portal -&amp;gt; PORTAL_primary_data -&amp;gt; Plant -&amp;gt; TRANSECTS -&amp;gt; DataRaw -&amp;gt; RawData and make a copy of a previous filled in .xlsx datasheet, clear it, and rename appropriately (Ex.:ShrubTransect_SummerXX.xlsx).&lt;/li>
+&lt;li>Enter data on DE1 tab. Field technician enters data on DE2 tab.
+&lt;ul>
+&lt;li>When filling in the year, encode full year value (Ex. Encode 2024 instead of 24).&lt;/li>
+&lt;li>If needed, check the Species List tab for the correct spelling of species ID codes.&lt;/li>
+&lt;li>Refer to the &lt;a href="https://github.com/weecology/PortalData/blob/main/testthat/test-shrub_transects.R" target="_blank" rel="noopener">test&lt;/a> for appropriate values for each column.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="data-qa-1">Data QA&lt;/h3>
+&lt;ul>
+&lt;li>In GitHub (remote):
+&lt;ul>
+&lt;li>create new branch and rename it to: plants_season-year (Ex.: plants-Summer2024). Make sure you are in the correct repo: PortalData).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>A. Quadrat data&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>In RStudio (local):
+&lt;ul>
+&lt;li>Click File -&amp;gt; New Project -&amp;gt; Existing Directory and browse to where PortalData is saved in your computer and open it&lt;/li>
+&lt;li>In the terminal tab in RStudio, type:
+&lt;ul>
+&lt;li>git pull (to make sure that you have the latest version of the files)&lt;/li>
+&lt;li>git checkout plants-season-year (make sure you are working on the new branch you just created)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>In the Files tab in R, go to PortalData -&amp;gt; DataCleaningScripts, and click on clean_plant_quadrat_data.R.&lt;/li>
+&lt;li>Run all lines of code and don&amp;rsquo;t forget to update line 29 and 30 to the correct season and year.
+Note: If you are using a Windows Machine:
+&lt;ul>
+&lt;li>line 32 (filepath= &amp;ldquo;&amp;rdquo;) should have 2 back slashes after each location (Ex.: filepath= D:\Dropbox\Portal\PORTAL_primary_data\Plant\Quadrats\Dataraw\Newdata\)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Address all issues until the datasheets are matched.&lt;/li>
+&lt;li>Push the changes and write an intuitive commit message.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>B. Transect data&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>In RStudio (local):
+&lt;ul>
+&lt;li>Access the repo in your local.&lt;/li>
+&lt;li>In the Files tab in R, go to PortalData -&amp;gt; DataCleaningScripts, and click on clean_shrub_transect_data.R.&lt;/li>
+&lt;li>Run all lines of code and don&amp;rsquo;t forget to update line 28 and 29 to the correct season and year.
+Note: If you are using a Windows Machine:
+&lt;ul>
+&lt;li>line 30 (filepath= &amp;ldquo;&amp;rdquo;) should have 2 back slashes after each location (Ex.: filepath= D:\Dropbox\Portal\PORTAL_primary_data\Plant\TRANSECTS\Data_raw\RawData\)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Notes:&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>You do not need to do all these in one sitting, especially when entering and QAing the plant data. Just make sure you save your changes locally.&lt;/li>
+&lt;li>Follow the steps for QAing the rodent data to create a PR for the new plant data. Again, make sure to write intuitive commit messages every time you push &lt;em>new&lt;/em> changes.&lt;/li>
+&lt;li>The following tags for commit messages in Github should be used accordingly:
+&lt;ul>
+&lt;li>[major] - use if you&amp;rsquo;ve made a breaking change (e.g changed the shape of a data table). This will update the version from 1.88.0 to 2.0, for example.&lt;/li>
+&lt;li>[minor] - use if you&amp;rsquo;re adding new data. This is the default so no tags in a commit message will assume this. This will update the version from 1.88.0 to 1.89.0, for example.&lt;/li>
+&lt;li>[patch] - use if you&amp;rsquo;ve made a small change to existing data (eg fixed species or sex, or a typo, etc), without adding new data. This will update from 1.88.0 to 1.88.1, for example.&lt;/li>
+&lt;li>[no version bump] - This would usually be for changes to code that don&amp;rsquo;t change data at all (eg, adding tests). The version number will not change, and the update won&amp;rsquo;t get archived on Zenodo.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Portal Field Trips</title><link>http://localhost:1313/docs/field-work/portal-rodent-trips/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-rodent-trips/</guid><description>&lt;h2 id="pre-trip-preparations">Pre-trip Preparations&lt;/h2>
+&lt;ol>
+&lt;li>Add census dates to Portal Google calendar&lt;/li>
+&lt;li>Put together field crew.
+&lt;ul>
+&lt;li>During the summer months, a crew of 4 (including RA) is ideal for the rodent census. Portal plant census trips may benefit from more people.&lt;/li>
+&lt;li>&amp;ldquo;Local&amp;rdquo; volunteers (Tucson-based folks) sign up in this &lt;a href="https://forms.gle/6XXCzp5bUzgG6XNA9" target="_blank" rel="noopener">form&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Submit the volunteer form for any new volunteers that need reimbursement or if you are purchasing any travel for them:
+&lt;ul>
+&lt;li>&lt;a href="https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.office.com%2FPages%2FResponsePage.aspx%3Fid%3D-KBNDTFKdk2s5gpiMx4bhGicOwDMKeFOrgQpJC5WLa1UQUIzSEtWT0tVUEY1SzVDUUsxQzJSSTM5TiQlQCN0PWcu&amp;amp;data=05%7C02%7Cgmyenni%40ufl.edu%7Cdbd63a14bb314ae5673408dd09a40e93%7C0d4da0f84a314d76ace60a62331e1b84%7C0%7C0%7C638677322405818577%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;amp;sdata=GKm3AtiUgNKVMEqWksXO3pjI1DgrOdRVvNwhp7RIPW8%3D&amp;amp;reserved=0" target="_blank" rel="noopener">WEC - POI Guest, Volunteer Request&lt;/a>&lt;/li>
+&lt;li>Select &lt;strong>Both&lt;/strong> Travel POI and Volunteer Request&lt;/li>
+&lt;li>University of Florida Affiliation Status - Volunteer
+&lt;ul>
+&lt;li>Even grad students at UF should choose the status Volunteer.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Local Mailing Address - where you want to receive your reimbursement check, if different from permanent address&lt;/li>
+&lt;li>Local physical (work site) address is: BLM land, Desert Willow Rd, Cochise County, AZ).&lt;/li>
+&lt;li>Are you expecting travel payment or reimbursements? - Yes&lt;/li>
+&lt;li>Are you requesting to also become a Volunteer? - Yes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Book Travel
+&lt;ul>
+&lt;li>File a &lt;a href="https://wec.ifas.ufl.edu/resources/ufgo-travel-forms/" target="_blank" rel="noopener">blanket travel request&lt;/a> for all crew members. Choose Option 2 and fill the form accordingly.&lt;/li>
+&lt;li>Book flights and lodging for yourself and all non-UF field crew members using &lt;a href="https://www.concursolutions.com/home.asp" target="_blank" rel="noopener">UFGO&lt;/a>.&lt;/li>
+&lt;li>Coordinate with other UF employees to book their travel similarly.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>(&lt;em>Optional&lt;/em>) A week before travel, reach out to volunteers to get food/drink requests and order groceries online (e.g., Walmart), and just do a pick-up the day you drive down to the site.&lt;/li>
+&lt;li>In Tucson
+&lt;ul>
+&lt;li>Pick up field truck in the off airport parking lot. Use the PCard to pay for it.&lt;/li>
+&lt;li>Pickup/buy groceries&lt;/li>
+&lt;li>Fill water containers (in Walmart, Watermill Express or other refilling stations)&lt;/li>
+&lt;li>Fill gas&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="portal-rodeo">Portal-Rodeo&lt;/h2>
+&lt;p>Remember you are on the AZ-NM border, and they are in separate time zones half the year. NM is MDT/MST, while AZ is always MST. Keep the clock in the truck on AZ time, then you never have to change it. Phones usually are on NM time, but it can depend on the carrier and where you are standing. There is a digital alarm clock in the truck you can use so you have a consistent time piece for waking up in the morning. Portal and everything up Cave Creek Canyon operates on AZ time. Sky Island Grill, the Chiricahua Desert Museum and Rodeo are on NM time.&lt;/p>
+&lt;p>We are starting to get some useful resources in the Portal-Rodeo area.&lt;/p>
+&lt;p>&lt;a href="https://portal-rodeo.com/" target="_blank" rel="noopener">Portal-Rodeo community&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.friendsofcavecreekcanyon.com/" target="_blank" rel="noopener">Friends of Cave Creek Canyon&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.portallodge.com/" target="_blank" rel="noopener">Portal Store&lt;/a>&lt;/p>
+&lt;p>You will need a lot of firewood to keep your volunteers warm and happy through the winter. To get a supply for the whole winter, go to the Portal Store and ask for the number of who is currently delivering firewood, or it will be posted there or at the Library. Some will deliver, or you can pick it up in town. Use your per diem, do not put it on your P Card!&lt;/p>
+&lt;h2 id="rodent-census">Rodent Census&lt;/h2>
+&lt;p>A Portal weekend consists of two nights of rodent trapping. We drive down to the site no later than mid-day (can be a bit later during the summer). The drive is ~3 hrs long. Once we get there, we set camp and just before sunset we&amp;rsquo;ll set traps on 12 plots (refer to trapping map in Dropbox to determine which plots are set on the first and second night), which takes about 2 hours.&lt;/p>
+&lt;p>The GoalZero battery, which we use to charge our electronic devices and power the camp lights, need to be set-up/charged using the solar panel. Prop the solar panel up in the small mound next to the ramada, and make sure it is facing the sun (You may need to adjust it throughout the day). Connect the wire to the extension cord and plug the extension cord to the GoalZero battery. Make sure that the green light in the charger plug is on. It is ideal that the camp lights and the stove are also set up before heading out to the plots.&lt;/p>
+&lt;p>When out setting traps on Day 1, the RA can opt to visit the locations of the camera traps and collect/replace the SD cards and/or replace batteries (Note: labels on the SD cards refer to the location of the camera trap. Ex. 21 west means it is the SD card used for the camera trap located on the west side of the plot NOT where it is facing). Camera traps are currently at the east and west side of the gates on plots 11 and 21.&lt;/p>
+&lt;p>The next day, we get up just before dawn, get a light breakfast, and head out to the plots. We process animals in the plots so make sure to pack water and snacks (&amp;ldquo;exiled&amp;rdquo; rodents are taken out of the site). The RA will be the one actually handling the animals while the volunteer records data and assists with equipment. Volunteers can handle &amp;ldquo;exiled&amp;rdquo; rodents if they are interested.&lt;/p>
+&lt;p>Later in the afternoon/early evening, we&amp;rsquo;ll set traps on the other half of the plots (n=12). The next morning will be the same as previous, where we process rodents in the plots. No later than mid-day, we&amp;rsquo;ll break camp, the RA collects data from the weather station, and then, we head back to Tucson.&lt;/p>
+&lt;h2 id="guides">Guides&lt;/h2>
+&lt;p>The following rodent trapping-related field guides are in the Portal Dropbox for you to study. Also keep hard copies in the field to reference:&lt;/p>
+&lt;ul>
+&lt;li>Dropbox/Portal/FieldGuides/Smammal_trapping_protocol.doc: instructional guide on the trap setting and data collection protocol&lt;/li>
+&lt;li>Dropbox/Portal/FieldGuides/Trapping_map.pptx: a diagram of the plot locations and the trapping schedule (i.e., details on which plots you need to set traps in on each day, and where trap boxes need to be moved to for the second day of trapping)&lt;/li>
+&lt;li>Dropbox/Portal/FieldGuides/Rodent_ID_cards.pdf: descriptive field guide on all the rodent species recorded on site. Use when uncertain about the identity of the animal on hand&lt;/li>
+&lt;li>Dropbox/Portal/FieldGuides/Sexing_Rodents.pdf: descriptive field guide to the correct sexing of rodent species&lt;/li>
+&lt;/ul>
+&lt;h2 id="post-trip-duties">Post-trip Duties&lt;/h2>
+&lt;ol>
+&lt;li>Check millet supply. If low, schedule a trip to a pet store. &lt;a href="https://okfeedaz.com/" target="_blank" rel="noopener">OK Feed and Pet Supply&lt;/a> sells a 50 lbs bag of white millet for ~$30. Use PCard to pay for it.&lt;/li>
+&lt;li>Clean inside of field truck.
+&lt;ul>
+&lt;li>Drain cooler. Leave lid slightly ajar and crack open window of the bed of the truck to to vent it.&lt;/li>
+&lt;li>Set-up the solar panel so that the GoalZero battery gets charged. Place the solar panel in the dashboard horizontally and plug the wire to the GoalZero battery. (If the battery isn&amp;rsquo;t charge well, you can bring it in the hotel room and charge it first).&lt;/li>
+&lt;li>Drop off field truck at the off airport poarking lot. &lt;strong>Remember to take a photo of the stub/card they give you in the free shuttle.&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Complete Travel
+&lt;ul>
+&lt;li>Submit receipts of PCard purchases (lodging, baggage, fuel, field gear, trapping supplies, etc.) using the &lt;a href="https://wec.ifas.ufl.edu/resources/ufgo-pcard-forms/" target="_blank" rel="noopener">PCard Receipt Submision Form&lt;/a>&lt;/li>
+&lt;li>Fill in &lt;a href="https://wec.ifas.ufl.edu/media/wecifasufledu/files/Vehicle-Use-Record-Mileage.pdf" target="_blank" rel="noopener">mileage log&lt;/a> and send to WEC Operations Manager (currently, Cameron Carter (&lt;a href="mailto:ccriderr@ufl.edu">ccriderr@ufl.edu&lt;/a>)) and CC WEC Fiscal (&lt;a href="mailto:wecfiscal@ifas.ufl.edu">wecfiscal@ifas.ufl.edu&lt;/a>). Note: You have until the fifth day of the next month to submit the log from the previous month.&lt;/li>
+&lt;li>Submit a &lt;a href="https://wec.ifas.ufl.edu/resources/ufgo-travel-forms/" target="_blank" rel="noopener">Travel Expense Report&lt;/a> for yourself and all non-UF travelers within a week of returning from the trip.&lt;/li>
+&lt;li>Send the &lt;a href="https://wec.ifas.ufl.edu/resources/ufgo-travel-forms/" target="_blank" rel="noopener">Travel Expense Report&lt;/a> to all UF travelers and remind them to submit.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Enter and QA rodent/plant data by following the instructions in the relevant section under Portal Data Entry.&lt;/li>
+&lt;li>Download camera trap photos.
+&lt;ul>
+&lt;li>Use The Reconyx Buckview Software (on the Surface Pro) to go through the photos before depositing in the drive.&lt;/li>
+&lt;li>Deposit on the lab T: drive in the appropriate folders: portal_cameras-&amp;gt; year_folder(Ex. 2024)-&amp;gt; year-month_folder (Ex. 2024-05) -&amp;gt; location.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="things-to-pack">Things to pack&lt;/h2>
+&lt;ul>
+&lt;li>truck keys&lt;/li>
+&lt;li>PIT tag reader&lt;/li>
+&lt;li>PIT tags&lt;/li>
+&lt;li>weather station Surface Pro&lt;/li>
+&lt;li>rodent/transect/quadrat data sheets (Quadrat data sheets are needed for both summer and Winter plant census trips and Transect data sheets are only needed during the summer plant census trip)&lt;/li>
+&lt;li>sleeping bag (and sleeping pad, though we have some extras in the truck)&lt;/li>
+&lt;li>headlamp&lt;/li>
+&lt;li>hiking boots&lt;/li>
+&lt;li>field clothes (Note that there are lots of thorny plants at the site)&lt;/li>
+&lt;li>hat/sunglasses (for shade from the sun, and also for the chilly evenings/mornings)&lt;/li>
+&lt;li>water bottle&lt;/li>
+&lt;li>rain jacket&lt;/li>
+&lt;li>chapstick&lt;/li>
+&lt;li>(&lt;em>Optional&lt;/em>) something to keep yourself occupied during down time (book, music, etc.)&lt;/li>
+&lt;li>(&lt;em>Optional&lt;/em>) tent&lt;/li>
+&lt;/ul>
+&lt;h2 id="plant-census">Plant Census&lt;/h2>
+&lt;p>We conduct plant census trips twice a year: Once in the winter (around late March/early April) and once in the summer (around late August/early September). The dates vary based on its proximity to the new moon date of those months because we also do rodent census during this trip. Ideally, this is conducted with atleast 4 people. Usually, we stay at the site for 1 week during these trips. During the winter plant census, we only do quadrats. During the summer, we do BOTH transect and quadrats. Sampling protocol described &lt;a href="https://github.com/weecology/PortalData/blob/main/SiteandMethods/Methods.md" target="_blank" rel="noopener">here&lt;/a>. Allocation of the time for each task (rodent/plant data collection) can vary depending upon your arrival time on site and weather. It is recommended that site maintenance be done during this trip (e.g., fix trap boxes, fix gates, stomp out holes within 1m of the fences, clearing trails, etc.).&lt;/p>
+&lt;h2 id="some-other-things-to-keep-in-mind">Some other things to keep in mind&lt;/h2>
+&lt;ul>
+&lt;li>You can let volunteers know they don&amp;rsquo;t need to bring anything (coffee, snacks, plates, utensils, first aid, etc.) unless they want to. We take care of all food and most supplies.&lt;/li>
+&lt;li>Also warn volunteers this is a rustic camping situation, meaning no bathroom facilities and no water supply except what we bring in. We have several large jugs we can fill for drinking and washing dishes, but they may want to bring wet wipes or other personal hygeine supplies to be comfortable.&lt;/li>
+&lt;li>It may be quite cold in December - February (it has been known to freeze overnight)&lt;/li>
+&lt;li>It will definitely be quite hot in May - August&lt;/li>
+&lt;li>There is somewhat limited cell reception at the site, depending on your carrier&lt;/li>
+&lt;li>We camp out in the desert. The bed of the truck is spacious enough to fit 2 tall people. The back seat inside the truck can also be used but will only be comfortable for those under 5'4&amp;quot;. There is an extra 2-person tent in the truck that anyone can use. Anyone is welcome to bring/set up a tent near the ramada, there are a few established spots.&lt;/li>
+&lt;/ul></description></item><item><title>Portal Safety</title><link>http://localhost:1313/docs/field-work/portal-safety-info/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-safety-info/</guid><description>&lt;h2 id="field-emergencies">Field emergencies&lt;/h2>
+&lt;p>Remember the golden rule: the safety of people first. the safety of rodents second. the safety of the data is a distant third.&lt;/p>
+&lt;h3 id="9-1-1">9-1-1&lt;/h3>
+&lt;p>The site has cell phone coverage and you can call 9-1-1. Give them this information:
+Your Name
+Your county (Cochise if at the site, in the mountains, or at Portal town. Hidalgo if you are in New Mexico)
+What is your emergency.&lt;/p>
+&lt;h3 id="non-emergency-medical-services">Non-Emergency Medical Services:&lt;/h3>
+&lt;p>&lt;a href="https://cochise.az.gov/520/Search-Rescue" target="_blank" rel="noopener">Cochise County Search and Rescue&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.facebook.com/PortalFireRescue/" target="_blank" rel="noopener">Portal Fire and Rescue&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://portal-rodeo.com/portal-rescue.html" target="_blank" rel="noopener">Portal-Rodeo Community&lt;/a>&lt;/p>
+&lt;p>&lt;a href="http://www.friendsofcavecreekcanyon.com/visiting/medical-emergencies/" target="_blank" rel="noopener">Friends of Cave Creek Canyon&lt;/a>&lt;/p>
+&lt;p>There is a medical clinic in Portal staffed by a Nurse Practitioner on Tuesday mornings and Thursday and Friday afternoons.&lt;/p>
+&lt;p>Some emergency personnel will generally be on call in the Portal area, or someone at the Portal store or Sky Island Grill will know where they are. Lately, we&amp;rsquo;ve met Marty Allred of Cochise County Search and Rescue, and Carolyn Nordstrom of Portal Fire and Rescue.&lt;/p>
+&lt;p>There is a walk-in urgent care facility in Douglas, about 60 minutes south on Route 80. (520-364-7659). The closest hospitals are in Willcox, about 90 minutes northwest by car and in Bisbee, about 90 minutes southwest by car. Portal and Rodeo both have excellent EMT, ambulance and search and rescue capabilities.&lt;/p>
+&lt;h4 id="urgent-care">Urgent Care&lt;/h4>
+&lt;p>Copper Queen Community Hospital Douglas Rural Health Clinic: There is an &amp;ldquo;Emergency Department&amp;rdquo; which is open 24-hours a day, including weekends and holidays. It describes itself as &amp;ldquo;urgent care on steroids&amp;rdquo;. Anything serious (i.e. potentially life threatening, should be a 9-1-1 call. If you get really sick or experience a non-life threatening injury, then this is probably where you want to go.
+Address: 100 E. Fifth Street Douglas, AZ 85607
+520-805-6800 &lt;a href="https://cqch.org/cqch-clinics/copper-queen-douglas-rhc/" target="_blank" rel="noopener">https://cqch.org/cqch-clinics/copper-queen-douglas-rhc/&lt;/a>&lt;/p>
+&lt;h4 id="emergency-room">Emergency Room&lt;/h4>
+&lt;p>While Bisbee is equally close, if you are at the site and this isn&amp;rsquo;t a call 9-1-1 emergency but you think you need an emergency room, then Willcox is probably where you want to go. Wilcox is more straight forward to drive to (on the interstate) than Bisbee (up in the mountains). But if you are already in Douglas, or if you are someplace where Bisbee is closer than Wilcox, then go there!&lt;/p>
+&lt;p>Wilcox: Northern Cochise Community Hospital. 901 W. Rex Allen Dr., Willcox, AZ 85643
+Hospital Telephone: 520-384-3541 or Toll Free: 1-844-696-3541 website: &lt;a href="http://www.ncch.net/" target="_blank" rel="noopener">http://www.ncch.net/&lt;/a>&lt;/p>
+&lt;p>Bisbee: Copper Queen Community Hospital. 101 Cole Ave., Bisbee, AZ 85603
+Tel: 520.432.5383 &lt;a href="https://cqch.org/" target="_blank" rel="noopener">https://cqch.org/&lt;/a>&lt;/p>
+&lt;h3 id="wfrfirst-aidcpr">WFR/First Aid/CPR&lt;/h3>
+&lt;p>Support is available to get WFR or first aid/CPR certified/re-certified. Let us know if you are interested or need to be reimbursed. There is a first aid kit in the field truck. Feel free to add to it and charge to the project.&lt;/p>
+&lt;h2 id="potential-hazards">Potential Hazards&lt;/h2>
+&lt;h3 id="snakebites">Snakebites&lt;/h3>
+&lt;p>If someone gets bitten by a rattlesnake, call 911. This will connect you to the NM dispatcher who will then connect you to the Cochise dispatcher. You will need a helicopter to Tucson, because nearby hospitals don&amp;rsquo;t carry antivenom.&lt;/p>
+&lt;h3 id="zoonoses">Zoonoses&lt;/h3>
+&lt;p>To the best of our collective knowledge, nobody has ever contracted a disease because of fieldwork with the Portal rodents. Possible diseases that could be contracted through contact with rodents are:&lt;/p>
+&lt;p>Hantavirus: contracted through inhalation of dried feces/urine, usually in enclosed spaces with poor ventilation. It is carried by Murid rodents. This is a severe disease with a high fatality rate but there is &lt;a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2857298/" target="_blank" rel="noopener">little evidence that mammalogists contract this disease from handling rodents in open-air conditions&lt;/a>. Don&amp;rsquo;t disturb the woodrat midden, and avoid kicking up rodent-y dust. American society of mammalogist suggestions can be found here: &lt;a href="https://academic.oup.com/jmammal/article/91/6/1524/892462" target="_blank" rel="noopener">https://academic.oup.com/jmammal/article/91/6/1524/892462&lt;/a>&lt;/p>
+&lt;p>Rabies: This is theoretically a risk from fieldwork at the site but transmission by squirrel-sized or smaller rodents is &lt;a href="https://www.mdedge.com/emergencymedicine/article/174385/infectious-diseases/when-rodents-attack-review-rabies-and-post" target="_blank" rel="noopener">extremely rare&lt;/a>. More likely (though still extremely rare) would be an attack from a larger mammal such as a coyote, fox, skunk, or raccoon. If one of these species is observed behaving strangely or aggressively, care should be taken as they can and do transmit rabies. A bite from one of these animals should be reported immediately to a nearby medical facility.&lt;/p>
+&lt;p>Bubonic Plague or other ectoparasite carried diseases: There are no incidents of bubonic plague in humans near our field site (&lt;a href="https://www.cdc.gov/plague/maps/index.html" target="_blank" rel="noopener">https://www.cdc.gov/plague/maps/index.html&lt;/a>) so this is considered a very unlikely event. However, our animals do have ectoparasites. We have seen no evidence of these ectoparasites jumping to humans (no one becomes flea infested or has found themselves with ticks), but people should inspect themselves after being in the field.&lt;/p>
+&lt;h3 id="humans">Humans&lt;/h3>
+&lt;p>There are pepper spray guns in the driver and passenger door wells of the truck.&lt;/p>
+&lt;p>If you feel unsafe sleeping at the site, there are other places to camp. RAs have used Rusty&amp;rsquo;s RV Ranch, and there are campsites up the canyon past Portal. Sunny Flat and Stewart are open year-round and cost $20 a night each; make sure you have cash. They are about 3 miles up the canyon past the Portal store. The lodge is an option in a pinch. It closes for check in at 6.&lt;/p>
+&lt;p>There is a heavy Border Patrol presence in the area. There have not been any negative interactions between Border Patrol and project personnel and the state vehicle provides some protections as it shows you are affiliated with governmental organizations. But everyone should be aware that at a national level there are a number of reported incidents of US citizens and legal immigrants being detained. We recommend traveling with identification and potentially your passport. We will also provide a letter on UF letterhead with the names of the project personnel as an added protection. If you would like a letter that also mentions your volunteer, contact Glenda or Morgan and they can provide one.&lt;/p></description></item><item><title>Portal Vehicle Guide</title><link>http://localhost:1313/docs/field-work/portal-vehicle-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-vehicle-guide/</guid><description>&lt;p>The field vehicle is a 2015 Toyota Tundra.&lt;/p>
+&lt;p>Motor Pool vehicle number 5277.&lt;/p>
+&lt;p>A little maintenance and preparation goes a long way. Once you leave Tucson, you&amp;rsquo;re on a tight schedule to get everything done, and services get thinner until they&amp;rsquo;re basically nonexistent. We have had no luck getting a tow truck to come to the site. There are lots of capable folks around Portal, but organizing help will burn a day or more. And take care to avoid avoidable disasters - take good care of the battery, don&amp;rsquo;t leave the accessories on without turning the truck on, watch your fuel gauge, hang the keys in the same place in the ramada every time so you don&amp;rsquo;t lock them in the truck, don&amp;rsquo;t drive excessively fast on the dirt road so you don&amp;rsquo;t pop a tire or rattle something loose.&lt;/p>
+&lt;h3 id="monthly-maintenance">Monthly Maintenance&lt;/h3>
+&lt;ul>
+&lt;li>Before you leave the parking lot, do a &amp;lsquo;walk-around.&amp;rsquo; Deal with any issues before you leave Tucson. If you&amp;rsquo;re already on your way, Wilcox is another good place to stop.
+&lt;ul>
+&lt;li>Check for (new) dents/scratches&lt;/li>
+&lt;li>Check the tires, including the spare - are they low? is the tread wearing thin?&lt;/li>
+&lt;li>Check the headlights/taillights/running lights&lt;/li>
+&lt;li>Note how the vehicle starts - does it seem slow? does it sound wierd?&lt;/li>
+&lt;li>Brakes - do they seem sluggish or noisy?&lt;/li>
+&lt;li>Warning lights - Be mindful of these - the only normal light is the regular maintenance light, which should come on about the time we need an annual inspection.&lt;/li>
+&lt;li>Windshield wipers - these are safety equipment! And they&amp;rsquo;re cheap to replace, especially compared to the rest of the truck. If they start to be less-than-perfect, get them replaced ASAP at AutoZone/Napa/etc.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Refill out of stock or expired items in the first aid kit&lt;/li>
+&lt;li>Jumper cables are under the back seat. Use another vehicle if you have one available, otherwise use the:&lt;/li>
+&lt;li>Jumpstarter - this is a big red box that lives in the truck. You can use it to jumpstart the battery if it has recently died and the battery is healthy. Keep the jumpstart battery healthy by charging it in a hotel room whenever you get a chance.&lt;/li>
+&lt;li>Before you head back to Tucson, check for rodents trying to make a home in the truck.&lt;/li>
+&lt;/ul>
+&lt;h3 id="tool-kit">Tool Kit&lt;/h3>
+&lt;p>A tool kit lives in the bed of the truck. Feel free to stock it with whatever you need, and put it on your P Card (eg for repairing cattle fence, ramada, trap boxes, plot fences).&lt;/p>
+&lt;h3 id="first-aid-kit">First aid kit&lt;/h3>
+&lt;p>This lives in the backseat of the truck. Check it regularly for out of stock items and expired meds. This is covered by per diem (not P card).
+Oft-requested items from volunteers:&lt;/p>
+&lt;ul>
+&lt;li>Bandaids, all sizes&lt;/li>
+&lt;li>Neosporin&lt;/li>
+&lt;li>Bite/sting ointment&lt;/li>
+&lt;li>Wraps&lt;/li>
+&lt;li>Medical Tape&lt;/li>
+&lt;li>Aleve/Ibuprofen/Tylenol&lt;/li>
+&lt;li>Allegra/Zyrtec&lt;/li>
+&lt;li>Benadryl&lt;/li>
+&lt;li>Dramamine&lt;/li>
+&lt;li>Eye drops&lt;/li>
+&lt;li>Tweezers&lt;/li>
+&lt;li>Nail clippers&lt;/li>
+&lt;li>Scissors&lt;/li>
+&lt;li>Tampons&lt;/li>
+&lt;/ul>
+&lt;h3 id="annual-maintenance">Annual Maintenance&lt;/h3>
+&lt;p>Once a year, we make an appointment at &lt;a href="https://www.deserttoyota.com/" target="_blank" rel="noopener">Desert Toyota&lt;/a> to service the truck. Usually this is done before the spring plant census, since we have extra time.
+Kyle Brooks is our service advisor. Always &lt;a href="https://www.deserttoyota.com/service-appointment-advisor/" target="_blank" rel="noopener">make an appointment&lt;/a> in advance.&lt;/p>
+&lt;p>When making the appointment, request:&lt;/p>
+&lt;ul>
+&lt;li>Lube, Oil and Filter Change&lt;/li>
+&lt;li>Air Filter - Replace&lt;/li>
+&lt;li>Cabin Air Filter - Replace&lt;/li>
+&lt;li>any suggested Mileage-based service (eg 25,000 Mile Service)&lt;/li>
+&lt;li>Tires - Rotate and Balance&lt;/li>
+&lt;li>Brakes - Clean and Adjust&lt;/li>
+&lt;li>any specific concern you have&lt;/li>
+&lt;/ul>
+&lt;p>The mechanics will decide what is actually necessary when they look at it, but this will (hopefully) budget enough time to get everything done. In general, just have them do everything they suggest. Kyle knows the vehicle is used under special circumstances and will make reccomendations based on that. Ask they run it through the car wash before you leave. Check the tires are properly mounted before you drive away!&lt;/p>
+&lt;p>We get the tires replaced at Discount Tire (not Desert Toyota). If Kyle says they need to be replaced, you can usually get in the same day.&lt;/p>
+&lt;h3 id="saftey-inspections">Saftey Inspections&lt;/h3>
+&lt;p>Annual saftey inspections are required by &lt;a href="https://www.facilitiesservices.ufl.edu/departments/operations/motor-pool/" target="_blank" rel="noopener">UF Motor Pool&lt;/a>.&lt;/p>
+&lt;p>The inspection checklist provided by Desert Toyota with your invoice works for this. Email it to &lt;a href="mailto:motorpool@facilitiesservices.ufl.edu">motorpool@facilitiesservices.ufl.edu&lt;/a>.&lt;/p>
+&lt;h3 id="az-collecting-permit">AZ Collecting Permit&lt;/h3>
+&lt;p>Morgan will be issued an AZ Collecting Permit each year, to allow trapping rodents. This should live in the truck.
+If you don&amp;rsquo;t get one for the new year, ask Morgan.&lt;/p>
+&lt;h3 id="registration">Registration&lt;/h3>
+&lt;p>A sticker should be sent to Morgan every year. If it&amp;rsquo;s out of date, ask Morgan.&lt;/p>
+&lt;h3 id="insurance">Insurance&lt;/h3>
+&lt;p>This does not change and does not need to be in the vehicle. The government plates and sticker should be sufficient. But, if someone requests it, you can request a &lt;a href="https://www.ehs.ufl.edu/forms/risk-management-forms/request-a-certificate-of-coverage/" target="_blank" rel="noopener">certificate of coverage&lt;/a>.&lt;/p></description></item><item><title>Portal Volunteer Guide</title><link>http://localhost:1313/docs/field-work/portal-volunteer-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-volunteer-guide/</guid><description>&lt;h2 id="uf-paperwork">UF paperwork&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>If this is your first time volunteering, you&amp;rsquo;ll need to complete this form: &lt;a href="https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.office.com%2FPages%2FResponsePage.aspx%3Fid%3D-KBNDTFKdk2s5gpiMx4bhGicOwDMKeFOrgQpJC5WLa1UQUIzSEtWT0tVUEY1SzVDUUsxQzJSSTM5TiQlQCN0PWcu&amp;amp;data=05%7C02%7Cgmyenni%40ufl.edu%7Cdbd63a14bb314ae5673408dd09a40e93%7C0d4da0f84a314d76ace60a62331e1b84%7C0%7C0%7C638677322405818577%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;amp;sdata=GKm3AtiUgNKVMEqWksXO3pjI1DgrOdRVvNwhp7RIPW8%3D&amp;amp;reserved=0" target="_blank" rel="noopener">WEC - POI Guest, Volunteer Request&lt;/a> . Or, if you do not have a ufl.edu account, send the RA your direct deposit info and they will submit on your behalf.&lt;/p>
+&lt;ul>
+&lt;li>Select &lt;strong>Both&lt;/strong> Travel POI and Volunteer Request&lt;/li>
+&lt;li>University of Florida Affiliation Status - Volunteer
+&lt;ul>
+&lt;li>Even grad students at UF should choose the status Volunteer.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Local Mailing Address - where you want to receive your reimbursement check, if different from permanent address&lt;/li>
+&lt;li>Local physical (work site) address is: BLM land, Desert Willow Rd, Cochise County, AZ).&lt;/li>
+&lt;li>Are you expecting travel payment or reimbursements? - Yes&lt;/li>
+&lt;li>Are you requesting to also become a Volunteer? - Yes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Keep track of your out-of-pocket expenses, and give them to the RA after the trip&lt;/p>
+&lt;ul>
+&lt;li>Include receipts for taxis/lyft, public transit fare, baggage fees&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="flights">Flights&lt;/h2>
+&lt;ul>
+&lt;li>You can fly in to Tucson any time from Thursday evening to mid-morning on Friday.&lt;/li>
+&lt;li>You can leave Tucson any time after Sunday evening.&lt;/li>
+&lt;/ul>
+&lt;h2 id="packing-list-for-a-volunteer">Packing list (for a volunteer)&lt;/h2>
+&lt;ul>
+&lt;li>Depending on the month, it could be very hot (May-August) or very cold (November-March).&lt;/li>
+&lt;li>Hiking boots &amp;amp; socks&lt;/li>
+&lt;li>Sandals or flip flops
+&lt;ul>
+&lt;li>For cooler months, I recommend an extra pair of warm socks to go under your sandals or camping slippers&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Hiking pants&lt;/li>
+&lt;li>2-3 tshirts or tanktops&lt;/li>
+&lt;li>An overshirt to keep the sun off&lt;/li>
+&lt;li>A hat for sun&lt;/li>
+&lt;li>Clothes for traveling and hanging out in Tucson&lt;/li>
+&lt;li>Sunblock&lt;/li>
+&lt;li>Sunglasses&lt;/li>
+&lt;li>Chapstick&lt;/li>
+&lt;li>2 water bottles&lt;/li>
+&lt;li>A headlamp + batteries&lt;/li>
+&lt;li>Toiletries as needed&lt;/li>
+&lt;li>Any medications you need&lt;/li>
+&lt;li>Hoodie in the summer, Down jacket in the winter&lt;/li>
+&lt;li>Thermal shirt&lt;/li>
+&lt;li>Thermal pants&lt;/li>
+&lt;li>Warm hat&lt;/li>
+&lt;li>Sleeping bag&lt;/li>
+&lt;li>Sleeping pad&lt;/li>
+&lt;/ul>
+&lt;p>There are 2 tents available for group use. You can bring a tent if you prefer your own.
+You can bring electronics, although there is a risk of them getting dusty or rained on. We have limited solar power.&lt;/p>
+&lt;h2 id="traveling-logistics">Traveling logistics&lt;/h2>
+&lt;h3 id="flying">Flying&lt;/h3>
+&lt;ul>
+&lt;li>Your travel expenses will be covered.&lt;/li>
+&lt;li>Keep track of how much you spend getting to the airport (taxi, public transit fee, or gas + a per mile reimbursement if you drive your own car).&lt;/li>
+&lt;li>Keep track of how much you spend on meals while traveling. You don&amp;rsquo;t need to keep the receipts, but they can be helpful for keeping track of your expenses.&lt;/li>
+&lt;li>Depending on when you arrive, the RA will pick you up in Tucson in our field truck. There is also a hotel shuttle that can pick you up.&lt;/li>
+&lt;li>We often have to gate check rollaboard carryons. If you gate check your bag, make sure to confirm whether to pick it up planeside or at baggage claim. Make sure you keep essential items, including medication, with you at all times.&lt;/li>
+&lt;/ul>
+&lt;h3 id="in-tucson">In Tucson&lt;/h3>
+&lt;ul>
+&lt;li>Generally, the RA will pay for things because it&amp;rsquo;s easier to keep track of the reimbursement that way. If you need to buy something, keep track of how much it was.&lt;/li>
+&lt;li>Thursday night, we&amp;rsquo;ll probably get dinner and then go back to the hotel.&lt;/li>
+&lt;li>Friday morning, we&amp;rsquo;ll go grocery shopping, fill up on water, and eat lunch in Tucson.&lt;/li>
+&lt;li>It&amp;rsquo;s a 3 hour drive to the site from Tucson. We&amp;rsquo;ll stop halfway to fill up on gas. The travel stop has good bathrooms.&lt;/li>
+&lt;/ul>
+&lt;h2 id="portal">Portal&lt;/h2>
+&lt;h3 id="safety">Safety&lt;/h3>
+&lt;ul>
+&lt;li>We want to maintain a field experience that is as safe and accessible as possible. Please bring any medications you will need. If you have any medical conditions that may pose a risk to your safety while in the field, please let the RA know so we can make good decisions. If anything might be exacerbated by stress, walking, heat and cold, or changes in diet, bear this in mind. If there are any accommodations we can make to improve your comfort or safety, we are more than happy to do that (and get creative!). If at any time you feel like work at the site is causing you harm, prioritize your health and safety, you can always opt out.&lt;/li>
+&lt;li>Stay hydrated! We bring lots of water, and we can go up the canyon to get more.&lt;/li>
+&lt;li>Human health is more important than data. Take breaks when you need them.&lt;/li>
+&lt;li>We have a basic first aid kit in the truck. The RAs have some first aid training, but may not be currently certified.&lt;/li>
+&lt;li>Wash your hands after touching traps or rodents.&lt;/li>
+&lt;li>If any food/utensils fall on the ground, don&amp;rsquo;t eat it or use them.&lt;/li>
+&lt;li>We&amp;rsquo;ve never had a problem with rodent-borne disease or parasites.&lt;/li>
+&lt;li>There aren&amp;rsquo;t any large dangerous predators at the site.&lt;/li>
+&lt;li>There is pepper spray in the driver side door of the truck.&lt;/li>
+&lt;/ul>
+&lt;h3 id="creatures">Creatures&lt;/h3>
+&lt;ul>
+&lt;li>There are rattlesnakes, scorpions, spiders, and centipedes at the site. Look before you put your hand into anything that might be described as a crevice.&lt;/li>
+&lt;li>&lt;em>Rattlesnakes&lt;/em>: Stay alert for a rattle. We have gaiters we use to cover our ankles when we&amp;rsquo;re walking around the site in the summer. Be especially alert moving quickly through clumps of grass and when opening/closing gates.&lt;/li>
+&lt;li>&lt;em>Scorpions&lt;/em>: Be careful about sticking your hand into dense clumps of grass or under rocks. Use a headlamp at night to avoid scorpions. Keep your shoes inside a tent/the truck, or make sure you shake them out before you put your feet in them. Most of the scorpions at the site probably have painful but not dangerous stings. The Arizona bark scorpion (&lt;a href="https://en.wikipedia.org/wiki/Arizona_bark_scorpion" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Arizona_bark_scorpion&lt;/a>) is potentially harmful, most are not.&lt;/li>
+&lt;li>&lt;em>Spiders&lt;/em>: We definitely have black widows and we might have brown recluses.&lt;/li>
+&lt;li>There is a large woodrat midden in the corner of the ramada (our shed). We don&amp;rsquo;t really touch it.&lt;/li>
+&lt;/ul>
+&lt;h3 id="logistics">Logistics&lt;/h3>
+&lt;ul>
+&lt;li>We sleep in the truck, either in the back (it is a closed bed pickup truck, so the back of the truck has room for two tall people to stretch out). Volunteers can pitch tents around the area where we park the truck, there are a few established spots. A tent is available for use, or you can bring your own.&lt;/li>
+&lt;li>We go to the bathroom in a designated area a little way away from the camping area. We pack out toilet paper, and bury waste when appropriate. We may be able to drive to flush toilets during the day on Saturday, but unfortunately there&amp;rsquo;s no way for us to completely avoid having to go to the bathroom outdoors. Bring wet wipes or other personal hygeine supplies as you prefer.&lt;/li>
+&lt;li>We carry several large containers of water for drinking, cooking, and washing. Use as much as you need. We can refill on Saturday if necessary.&lt;/li>
+&lt;li>There are no showers at the site.&lt;/li>
+&lt;li>Please let the RA know about dietary restrictions and preferences. We&amp;rsquo;re happy to get whatever groceries we need.&lt;/li>
+&lt;li>There is no electricity at the site. We do have a solar panel, which allows us to run small electronics (LED lights, charging phones, etc).&lt;/li>
+&lt;li>We will not trap if there is &amp;gt; 50% chance of rain and the overnight low is goign to be &amp;lt; 45 degrees. This is to keep the rodents from getting too cold.&lt;/li>
+&lt;/ul>
+&lt;h3 id="friday-afternoonevening">Friday afternoon/evening&lt;/h3>
+&lt;ul>
+&lt;li>We&amp;rsquo;ll unpack the truck and set up our living space.&lt;/li>
+&lt;li>About three hours before sunset, we&amp;rsquo;ll head out to set traps.
+&lt;ul>
+&lt;li>In all, we trap 12 plots per night.&lt;/li>
+&lt;li>Some of the plots have &amp;lsquo;gates&amp;rsquo;, little holes to let the right set of rodents come and go. We have to close the gates before we set traps. Someone walks the perimeter of the plot and covers the gates with a bit of hardware cloth and a rock.&lt;/li>
+&lt;li>We set one trap at each of 49 stakes in each plot. Each trap gets a handful of millet and is placed facing a random direction, close to the stake.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="saturday-morning">Saturday morning&lt;/h3>
+&lt;ul>
+&lt;li>We&amp;rsquo;ll get up about half an hour before sunrise to eat breakfast and get going.&lt;/li>
+&lt;li>Bring a snack and water with you.&lt;/li>
+&lt;li>As soon as there&amp;rsquo;s enough light to see, we&amp;rsquo;ll head out to check traps.
+&lt;ul>
+&lt;li>&lt;strong>Rodent processing&lt;/strong>
+&lt;ul>
+&lt;li>We&amp;rsquo;ll need to open all the gates.&lt;/li>
+&lt;li>The RA will handle the rodents, and you will record data.&lt;/li>
+&lt;li>Every month we have some rodents who got onto plots that they&amp;rsquo;re not supposed to be able to access. We take them far away from the site and release them. You can process some of the &amp;rsquo;exiles&amp;rsquo; if you want to, but there&amp;rsquo;s no pressure to if you don&amp;rsquo;t want to.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="saturday-afternoonevening">Saturday afternoon/evening&lt;/h3>
+&lt;ul>
+&lt;li>Is free time. We may have some maintenance to do.&lt;/li>
+&lt;li>Three hours before sunset, we&amp;rsquo;ll head out to set the second half of the traps.&lt;/li>
+&lt;/ul>
+&lt;h3 id="sunday-morning">Sunday morning&lt;/h3>
+&lt;ul>
+&lt;li>We&amp;rsquo;ll get up before sunrise and have breakfast, then head out and process the second night of rodents.&lt;/li>
+&lt;li>We&amp;rsquo;ll put all the traps back in the trap shed, and pack up.&lt;/li>
+&lt;li>Usually we leave the site in the early afternoon to drive back to Tucson. We&amp;rsquo;ll stop at the same gas station halfway through the drive.&lt;/li>
+&lt;/ul>
+&lt;h3 id="sunday-nightmonday-morning-in-tucson">Sunday night/Monday morning in Tucson&lt;/h3>
+&lt;ul>
+&lt;li>We&amp;rsquo;ll stay at a hotel, depending on when our flights are.&lt;/li>
+&lt;li>We&amp;rsquo;ll get dinner in Tucson. Breakfast is provided at the hotel.&lt;/li>
+&lt;/ul></description></item><item><title>Portal Weather Station</title><link>http://localhost:1313/docs/field-work/portal-weather-station/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/docs/field-work/portal-weather-station/</guid><description>&lt;h4 id="keep">KEEP&lt;/h4>
+&lt;h4 id="calm">CALM&lt;/h4>
+&lt;h4 id="and">and&lt;/h4>
+&lt;h4 id="love">LOVE&lt;/h4>
+&lt;h4 id="the">the&lt;/h4>
+&lt;h4 id="weather-station">WEATHER STATION&lt;/h4>
+&lt;p>Our weather station is from &lt;a href="http://www.campbellsci.com/" target="_blank" rel="noopener">Campbell Scientific&lt;/a> and it is a very fancy beast. Admittedly, the windy, sandy, chewy-rodenty desert is not an ideal environment to be working with expensive and temperamental electronics. Especially at the end of a long weekend of rodent trapping, when you&amp;rsquo;re tired and dirty, the sun makes it difficult to see the screen, and it seems your laptop could melt at any moment. Countless RAs before you know your pain. Rest assured, there is documentation to help you with whatever you need to figure out or do. If you can&amp;rsquo;t find how to do something, just ask Glenda, or the previous RA. As always, if something isn&amp;rsquo;t clear enough or could use improvement, please feel free to update it or suggest modifications. And if you have any tips or tricks you discover along the way, please add them to help out future Weecologists!&lt;/p>
+&lt;h3 id="monthly-ra-tasks">Monthly RA tasks&lt;/h3>
+&lt;p>The vast majority of the time, you will only be briefly connecting to the station to download data. Celebrate the accomplishment that is a simple month.&lt;/p>
+&lt;ul>
+&lt;li>Do a quick &amp;lsquo;walk-around&amp;rsquo; of the station and make sure everything is alright
+&lt;ul>
+&lt;li>nothing is knocked over&lt;/li>
+&lt;li>connections all look secure&lt;/li>
+&lt;li>charging regulator light is on&lt;/li>
+&lt;li>no cables are frayed or chewed&lt;/li>
+&lt;li>wind sensor is spinning freely&lt;/li>
+&lt;li>rain gauge isn&amp;rsquo;t clogged and is level&lt;/li>
+&lt;li>modem lights indicate power and a data connection&lt;/li>
+&lt;li>phenocam is sending pictures that are centered and focused&lt;/li>
+&lt;li>check the humidity meter in the datalogger enclosure
+&lt;ul>
+&lt;li>if it&amp;rsquo;s pink, replace the desiccant packs (in the &amp;ldquo;cable bag&amp;rdquo; in the truck)&lt;/li>
+&lt;li>this shouldn&amp;rsquo;t happen often (every few years), if you replace them more frequently, check the enclosure for leaks&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Download data from the 2016 station
+&lt;ul>
+&lt;li>Look at the current data before downloading to check it looks reasonable&lt;/li>
+&lt;li>Rename files &lt;em>&lt;code>periodcode&lt;/code>&lt;/em>&lt;code>_CR1000_MET.dat&lt;/code> and &lt;em>&lt;code>periodcode&lt;/code>&lt;/em>&lt;code>_CR1000_Storms.dat&lt;/code>&lt;/li>
+&lt;li>Move files to &lt;code>/UFL Dropbox/Portal/PORTAL_primary_data/Weather/Raw_data/2016_Station&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Download data from the 2002 station
+&lt;ul>
+&lt;li>Look at the current data before downloading to check it looks reasonable&lt;/li>
+&lt;li>Change filename to &lt;code>Met&lt;/code>&lt;em>&lt;code>periodcode&lt;/code>&lt;/em>&lt;code>.dat&lt;/code>&lt;/li>
+&lt;li>Move file to &lt;code>/UFL Dropbox/PORTAL_primary_data/Weather/Raw_data/2002_Station&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>There is a manual rain gauge mounted near the station. It&amp;rsquo;s mostly a tradition at this point, but it is nice to get an in-person look at how much moisture the site got over the last month.
+&lt;ul>
+&lt;li>measure the mm of rain&lt;/li>
+&lt;li>dump it out and add new mineral oil&lt;/li>
+&lt;li>write the measurement on the rodent datasheet&lt;/li>
+&lt;li>enter it into the spreadsheet in Dropbox&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="logistics---you-can-do-it-">Logistics - You Can Do It! :)&lt;/h3>
+&lt;p>Glenda may ask you to do some more complicated maintenance, or you may discover something needs to be done when checking on the station.&lt;/p>
+&lt;ul>
+&lt;li>If you have something complicated to do, don&amp;rsquo;t save it until the last day of your trip. The first thing you try may not work, and you&amp;rsquo;ll need some time for troubleshooting. It can be frustrating and difficult to focus if you need to leave soon to make a flight, or you&amp;rsquo;re tired and ready to be done for the month. It will be much more relaxing if you start the process earlier in the trip. And sometimes the solution will come to you if you just sleep on it!&lt;/li>
+&lt;li>Resources in the Portal area have fortunately improved in recent years. You may need to find wifi to look up directions, download drivers or software updates, etc. Or you may need to get supplies. It is likely you will be able to do some research or get what you need, and go back to the station to try it out. Trying one thing at a time over multiple trips is a long arduous process. It&amp;rsquo;s better to get it done in one trip.&lt;/li>
+&lt;li>Wifi is available at several locations:
+&lt;ul>
+&lt;li>&lt;a href="https://cochiselibrary.org/client/en_US/portal" target="_blank" rel="noopener">Portal Library&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.fs.usda.gov/recarea/coronado/recarea/?recid=84324" target="_blank" rel="noopener">Cave Creek Visitor Information Center&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.amnh.org/research/southwestern-research-station" target="_blank" rel="noopener">Southwestern Research Station&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="http://www.thevalleymercantile.com/" target="_blank" rel="noopener">Valley Mercantile&lt;/a> is a harware store and has electrical equipment&lt;/li>
+&lt;li>We have a set of electronics screwdrivers, zip and velcro cable ties, a voltmeter, a combination wire tool, and of course a tool box in the truck. All the computer supplies you need for connecting to the equipment (connecting the Surface to the modem, downloading data, etc.) are in the &amp;rsquo;electronics bag&amp;rsquo; in the truck. If there is anything else you find useful, buy it with your P Card (or ask Glenda to buy it) and add it to the kit!&lt;/li>
+&lt;/ul>
+&lt;h3 id="guides-and-documentation">Guides and documentation&lt;/h3>
+&lt;p>Read through the field guides and browse the manuals in the Portal Dropbox folder maze. It will feel less daunting if you&amp;rsquo;ve already studied up on what everything is and some basic procedures before something comes up.&lt;/p>
+&lt;ul>
+&lt;li>Dropbox/Portal/FieldGuides/Weather_Station_Diagram.pptx - a diagram of how everything is connected and how you access it, locally and remotely. Password protected, ask Glenda to share the password with you.&lt;/li>
+&lt;li>Dropbox/Portal/FieldGuides/Weather_station_guide.docx - a guide to everything (also password protected), including:
+&lt;ul>
+&lt;li>a description of all the hardware&lt;/li>
+&lt;li>a description of all the software&lt;/li>
+&lt;li>an explanation of how the network is set up and how to use it&lt;/li>
+&lt;li>instructions for common tasks&lt;/li>
+&lt;li>how to troubleshoot&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Dropbox/Portal/PORTAL_primary_data/Weather/Manuals - browse through these to see what each of the sensors look like. Some will be helpful in troubleshooting, in particular:
+&lt;ul>
+&lt;li>Modem-quick-deploy-guide.pdf&lt;/li>
+&lt;li>CellularModem.pdf&lt;/li>
+&lt;li>PhenoCam_Install_Instructions.pdf&lt;/li>
+&lt;li>Loggernet.pdf&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>When Glenda is at the site with you, have her give you an in-person tour of the weather station. Then, read through the guides again.&lt;/li>
+&lt;/ul>
+&lt;h3 id="resources">Resources&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://www.campbellsci.in/support" target="_blank" rel="noopener">Campbell Scientific Support&lt;/a> - this is where you find software downloads, drivers, FAQs, and the Forum.&lt;/li>
+&lt;li>&lt;a href="https://www.campbellsci.com/forum" target="_blank" rel="noopener">Campbell Scientific User Forum&lt;/a> - if it hasn&amp;rsquo;t come up for us before, it may not be in our guides, but it will likely be in the forum.&lt;/li>
+&lt;/ul>
+&lt;h3 id="phenocam">Phenocam&lt;/h3>
+&lt;p>The phenocam is the only piece of equipment on the station &lt;em>not&lt;/em> from Campbell Scientific. It takes a picture every day and uploads it to the &lt;a href="https://phenocam.nau.edu/webcam/sites/portal/" target="_blank" rel="noopener">Phenocam Network&lt;/a>. Those data are publically available and published every few years. They generate cool time series like a &lt;a href="https://phenocam.nau.edu/webcam/browse/portal/2017/" target="_blank" rel="noopener">stitched time series image&lt;/a> or &lt;a href="https://phenocam.nau.edu/webcam/roi/portal/SH_1000/" target="_blank" rel="noopener">gcc&lt;/a>. You can also access the live image remotely (instructions in field guide) where you can adjust the settings or focus.&lt;/p>
+&lt;h3 id="2002-station">2002 station&lt;/h3>
+&lt;p>This station has been going since 2002 and is very basic. In the 20-teens it gave us a lot of difficulty and seemed like it was on its way out. Which is why we installed the newer fancier one in 2016 (the &amp;lsquo;2016 station&amp;rsquo;). But it hasn&amp;rsquo;t given up the ghost yet. As long as it lasts, we&amp;rsquo;ll keep downloading the data and adding it to the &amp;lsquo;Portal_weather_overlap&amp;rsquo; file, so we have some adjustment between the old and new sensor measurements.&lt;/p></description></item></channel></rss>

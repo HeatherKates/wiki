@@ -5,11 +5,18 @@
 
 # Appearance
 
+favicon: "logo.png"
+
 appearance:
   theme_day: minimal
   theme_night: minimal
   font: minimal
   font_size: L
+
+logo:
+  main: "logo.png"
+  alt: "UFHCC Bioinformatics Logo"
+  show_logo: true
 
 # SEO
 
@@ -17,9 +24,9 @@ marketing:
   seo:
     site_type: Project
     local_business_type: ''
-    org_name: 'Weecology'
-    description: "Weecology's Lab Wiki"
-    twitter: 'weecology'
+    org_name: 'UF Health Cancer Center Bioinformatics'
+    description: "Bioinformatics Unit Wiki"
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -43,12 +50,10 @@ header:
 
 footer:
   copyright:
-    notice: '© 2008-2023 The contributors. This work is licensed under {license}'
-    license:
-      enable: true
-      allow_derivatives: true
-      share_alike: false
-      allow_commercial: true
+    notice: '© 2025 UF Health Cancer Center Bioinformatics. Portions adapted from the [Weecology Wiki](https://wiki.weecology.org/) by Weecology, used 
+under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).'
+    powered_by: 'Published with [Hugo Blox Builder](https://hugoblox.com/) — the free, [open source](https://github.com/HugoBlox/hugo-blox-builder) 
+website builder.'
 
 # Localization
 
@@ -67,7 +72,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/weecology/wiki'
+    url: 'https://github.com/heatherkates/wiki'
     content_dir: content
     branch: main
   comment:
