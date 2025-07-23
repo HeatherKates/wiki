@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: https://ufhcc-bcbsr.github.io/wiki/sitemap.xml
