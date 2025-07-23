@@ -4,7 +4,8 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: 'UFHCC BCB-SR Bioinformatics Wiki' # Website name
-baseURL: 'https://wiki.weecology.org' # Website URL
+baseURL: 'https://ufhcc-bcbsr.github.io/wiki/' # Website URL
+publishDir: "docs"
 
 ############################
 ## PAGE OPTIONS

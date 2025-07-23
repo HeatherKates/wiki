@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Grant Writing (Bioinformatics Plan) | UFHCC BCB-SR Bioinformatics Wiki</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/</link><atom:link href="https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/index.xml" rel="self" type="application/rss+xml"/><description>Grant Writing (Bioinformatics Plan)</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://ufhcc-bcbsr.github.io/wiki/media/icon_hu_bb893f6dc6eaf6fe.png</url><title>Grant Writing (Bioinformatics Plan)</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/</link></image><item><title>Publication Quality Figures</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/publication-figures/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/publication-figures/</guid><description>&lt;p>Journals (often) have strict yet confusing requirements for how they want manuscript figures to look. Here are some tips for how to handle this. [Using R]&lt;/p>
+&lt;h2 id="getting-the-right-sizeresolution">Getting the right size/resolution&lt;/h2>
+&lt;p>Journals often have size limits and recommended resolution for figures (e.g. no more than 6 in wide and 7 in tall, 600dpi resolution). Good news: if you use the ggplot2 package to make plots, you can then save your figures using &lt;a href="http://ggplot2.tidyverse.org/reference/ggsave.html" target="_blank" rel="noopener">ggsave()&lt;/a>! There are options for width, height, and dpi. And since the resulting file will almost certainly be larger than the journal&amp;rsquo;s size limit, use the argument compression=&amp;lsquo;lzw&amp;rsquo; to make it smaller.&lt;/p>
+&lt;h2 id="multi-part-figures">Multi-part figures&lt;/h2>
+&lt;p>I have found the package &lt;a href="https://cran.r-project.org/web/packages/multipanelfigure/multipanelfigure.pdf" target="_blank" rel="noopener">multipanelfigure&lt;/a> to be very useful. It allows you to make a multi-part figure by putting together any kind of objects: ggplot figures, base R figures, pngs, whatever. There is a fairly easy to understand example on their &lt;a href="https://github.com/cran/multipanelfigure" target="_blank" rel="noopener">GitHub repo&lt;/a>, and I used it in &lt;a href="https://github.com/emchristensen/Extreme-events-LDA/blob/master/rodent_LDA_analysis.r" target="_blank" rel="noopener">line 188 of this script&lt;/a>. The general idea is you create a grid object with the function multi_panel_figure(), in which you specify things like size of columns/rows:&lt;/p>
+&lt;p>&lt;code>grid_object &amp;lt;- multi_panel_figure(width = c(50,50), height = c(50,50))&lt;/code>&lt;/p>
+&lt;p>and then fill the grid one cell at a time&lt;/p>
+&lt;p>&lt;code>grid_object %&amp;lt;&amp;gt;% fill_panel(ggplot_figure, row = 1, column = 1)&lt;/code>&lt;/p>
+&lt;p>&lt;code>grid_object %&amp;lt;&amp;gt;% fill_panel(png_path, row = 1, column = 2)&lt;/code>&lt;/p>
+&lt;p>You can then use the function save_multi_panel_figure() which is similar to ggsave(), and again specify dpi and compression. Getting it to the right size is harder, I ended up playing around with column and row sizes until it fit.&lt;/p></description></item><item><title>Submitting a manuscript</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/manuscript-submission/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/manuscript-submission/</guid><description>&lt;p>Congrats! You&amp;rsquo;re getting ready to submit a manuscript for review at a journal. This guide will walk you through the various steps in the process, however, it assumes you&amp;rsquo;ve already decided what journal to submit to. Right now, there is no wiki page on that, so talk with Ethan or Morgan or one of the postdocs/staff for advice.&lt;/p>
+&lt;h2 id="manuscript-formatting">Manuscript Formatting&lt;/h2>
+&lt;p>Go to the journal&amp;rsquo;s website, and they should have a section called &amp;ldquo;For Authors&amp;rdquo;, &amp;ldquo;Author Instructions&amp;rdquo;, &amp;ldquo;Guide to Authors&amp;rdquo; or something along those lines. They should have detailed guidelines for citation style, section order, cover letter requirements, submission website link, etc. They will also, hopefully in the same location, have a description of the focus of the journal, which your manuscript should fall within.&lt;/p>
+&lt;p>The journal may have document templates (most commonly for Microsoft Word or LaTeX). If you are working in LaTeX, you may want to consider &lt;a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf&lt;/a>, which has some built-in templates for journals. If you are working in Rmarkdown, the &lt;a href="https://github.com/rstudio/rticles" target="_blank" rel="noopener">&lt;code>rticles&lt;/code>&lt;/a> package also has some common templates.&lt;/p>
+&lt;p>Using a citation manager that can format references using Citation Style Language (CSL) is highly recommended. Many styles can be found or modified from existing ones at &lt;a href="https://www.zotero.org/styles" target="_blank" rel="noopener">Zotero&amp;rsquo;s CSL list&lt;/a>. Many Rmarkdown outputs accept CSL files to format references.&lt;/p>
+&lt;p>&lt;a href="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/headings">Use real headings&lt;/a>.&lt;/p>
+&lt;h2 id="recommending-reviewers--editors">Recommending reviewers &amp;amp; editors&lt;/h2>
+&lt;p>Journals typically ask you to recommend 3 or more people who could potentially review your manuscript. Those people may or may not end up being reviewers, and they might not even be asked, but providing a good list will help increase the chance that the review process starts quickly and that you get good feedback from relevant reviewers.&lt;/p>
+&lt;p>It&amp;rsquo;s probably most important to recommend scientists who have similar philosophies to yours (e.g., if the paper has a macroecological approach, don&amp;rsquo;t choose someone who thinks fieldwork is the only way to do ecology).&lt;/p>
+&lt;p>Don&amp;rsquo;t recommend anyone who could have a conflict of interest. The idea is that people who would be biased by personal or institutional relationships to the authors should review the paper. Typically this is considered to include anyone at your current institution and anyone who&amp;rsquo;s been a (close) coauthor on a paper with any of the current manuscript&amp;rsquo;s coauthors in the last 5 - 10 years or so. You should ask coauthors to check the list of reviewer recommendations to conflicts before submitting.&lt;/p>
+&lt;p>Some journals will also ask for editor recommendations. There should be a page on the journal&amp;rsquo;s website with the editorial board, choose 1 - 2 associate editors that seem most appropriate, based on the manuscript topic.&lt;/p>
+&lt;p>Some journals will also allow you to designate reviewers with &amp;ldquo;conflicts&amp;rdquo; or something similar. This is not a list of people who have a conflict of interest as described above. It is an opportunity to designate people that you don&amp;rsquo;t want to review the paper because they are predisposed to review it negatively (e.g., they are directly competing with you in the research space, or have known objections to certain topics/approaches). We basically never list people, but if you are concerned about someone chat with your advisor.&lt;/p>
+&lt;h2 id="cover-letter">Cover letter&lt;/h2>
+&lt;p>All cover letters consist of:&lt;/p>
+&lt;ul>
+&lt;li>a business header (either the name of Editor in Chief &amp;amp; their professional address or your name and professional address) (if you forget this part it is not a problem and choosing one header or the other won&amp;rsquo;t raise any eyebrows though to the editor is more traditional)&lt;/li>
+&lt;li>a description consisting of the manuscript title, authors, and what &amp;rsquo;type&amp;rsquo; of article it is being submitted as for consideration (e.g., Report, Methods, Ideas and Concepts, Article, this varies from journal to journal and some journals do not have different types of article)&lt;/li>
+&lt;li>a brief description of the manuscript (typically 1 paragraph). For many journals, this description should convey either implicitly or explicitly why this article is of interest to the specific readership of this journal. If going to a general ecology journal like Ecology/Ecology Letters/AmNat then this description should focus on the aspects of your work that a general readership would find interesting. If going to GEB then focus on the general interest and global nature of the study. etc etc. If you are going for one of the journals whose mission is to publish what they think is the most influential research (Science, Nature, PLoS Biology, PNAS, eLife) then you need to emphasize the novelty and importance of the work and more than 1 paragraph may be acceptable (see the Riemer example below).&lt;/li>
+&lt;li>Any assurances or statements the journal requires (i.e. the work is the authors&amp;rsquo; own, it is not submitted elsewhere, etc).&lt;/li>
+&lt;/ul>
+&lt;p>Your letter should not be longer than 1 page, including the header material and your &amp;lsquo;signature&amp;rsquo; at the bottom (don&amp;rsquo;t need to literally sign it).&lt;/p>
+&lt;p>Here are some examples of cover letters&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/sdtaylor/phenology_dataset_study/blob/master/manuscript/cover_letter.txt" target="_blank" rel="noopener">Cover letter&lt;/a> for &lt;a href="https://doi.org/10.1002/ecy.2568" target="_blank" rel="noopener">Taylor et al. 2018&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../cover-letter-first-submission.pdf">Cover letter&lt;/a> for &lt;a href="https://doi.org/10.7554/eLife.27166" target="_blank" rel="noopener">Riemer et al. 2018&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="data-and-code-archiving">Data and Code Archiving&lt;/h2>
+&lt;p>Recommendation: Archive your code on &lt;a href="https://zenodo.org/" target="_blank" rel="noopener">Zenodo&lt;/a> using the &lt;a href="https://guides.github.com/activities/citable-code/" target="_blank" rel="noopener">GitHub-Zenodo integration&lt;/a>. Archive any data that hasn&amp;rsquo;t already been archived and that you have permission to archive (typically based on the license allowing &amp;ldquo;redistribution&amp;rdquo; or based on permission from the data collector) on either Zenodo (by archiving it along with the code) or separately on &lt;a href="https://datadryad.org/" target="_blank" rel="noopener">Dryad&lt;/a> (linking to the relevant code through Dryad). Have your code download the already-archived data from the archival source instead of archiving it again. If the journal has open data/code badges, indicate that you want to use them.&lt;/p>
+&lt;p>Discussion: Most journals now require the sharing of the code and data used for analyses in a paper. Even in cases where it isn&amp;rsquo;t required this is good for science through supporting reproducibility and building on existing work. Availability of data and code also increases use and citation of papers. There are a variety of locations to archive data. In ecology, general purpose repositories are the norm for most data. Zenodo and Dryad are both non-profits focused on the good of science with good sustainability models. They are also both common locations for archiving so choosing them will avoid any confusion about whether or not the data is properly archived. &amp;ldquo;Archive&amp;rdquo; implies that the data/code will be available in the long-term through guarantees to maintain the infrastructure hosting the data/code and not allowing the person depositing the data/code to remove it. The ability to remove code from GitHub means that GitHub is not considered archival.&lt;/p>
+&lt;h2 id="funding-sources">Funding sources&lt;/h2>
+&lt;p>Recommendation: Follow journal and funder guidelines for acknowledging funding sources.&lt;/p>
+&lt;p>Discussion: Funding agencies require that when their funds are used for research that this funding is acknowledged. Journals have two general approaches to doing this: 1) listing the funding in the Acknowledgements section; 2) having a separate component of the submission process where funding sources are acknowledged. Funding agencies often have specific requirements as well. Check with your advisor &amp;amp; collaborators in the sources that funded the work (you may not always be aware of the different sources) and also make sure to acknowledge any support that was made directly to you (e.g., individual fellowships). Check the funders requirements for for acknowledging their funding or follow an example of a previous paper from the lab with the same funding source.&lt;/p>
+&lt;h2 id="opentransparent-review">Open/Transparent Review&lt;/h2>
+&lt;p>Recommendation: Participate in open/transparent review.&lt;/p>
+&lt;p>It is increasingly common for journals to post reviews and author responses to those reviews online with a paper if it is accepted for publication in the journal. Some journals are also exploring posting reviews even for manuscripts that aren&amp;rsquo;t accepted. The goal is to increase the transparency of the overall scientific process and provide accountability for journals and authors if they have had an important issue pointed out to them that they haven&amp;rsquo;t addressed. Reviewers are typically given the option to remain anonymous. Generally speaking we think open, but anonymous, review history is a positive development and recommend opting in even if it is not required, but this is still a developing area and individual lead authors are welcome to not opt-in (or opt-out if allowed) if they wish after consulting with coauthors.&lt;/p>
+&lt;h2 id="submission">Submission&lt;/h2>
+&lt;p>Your formatted manuscript and cover letter will get uploaded to the journal&amp;rsquo;s author submission website. There will also be some web forms where they will ask for reviewer/editor suggestions, probably make you enter co-author info (that is already on your cover sheet, but try not to think about the redundancy in the process). Click submit and now you wait for the response, which is often in the 1-2 month, but sometimes closer to 3 months.&lt;/p>
+&lt;h2 id="preprints">Preprints&lt;/h2>
+&lt;p>Recommendation: Submit preprint to bioRxiv at time of first submission to a journal and update the preprint whenever you submit a revision of the manuscript (either as part of ongoing review or to a new journal after rejection). Check the journals preprint policy (in either the instructions to authors or on &lt;a href="https://v2.sherpa.ac.uk/romeo/" target="_blank" rel="noopener">Sherpa Romeo&lt;/a>) just to make sure they are allowed (though preprints are now allowed basically everywhere) and get sign off from coauthors to post a preprint.&lt;/p>
+&lt;p>Discussion: All major journals in ecology that we are aware of now allow posting preprints prior to submission (in part due to &lt;a href="https://jabberwocky.weecology.org/?s=preprint&amp;amp;submit=Search" target="_blank" rel="noopener">Weecology efforts&lt;/a>). They are good for science and professionally beneficial to both early career and established scientists (e.g., &lt;a href="https://doi.org/10.1371/journal.pbio.1001563" target="_blank" rel="noopener">Desjardins-Proulx et al. 2013&lt;/a>, &lt;a href="https://doi.org/10.1073/pnas.1511912112" target="_blank" rel="noopener">Vale 2015&lt;/a>). Benefits to putting up preprints include the possibility that more people will see your work, it will be able to influence the field sooner (as it can takes months or years for papers to be published), it can start to accumulated citations (currently used as a form of academic credit), and you could get valuable feedback to improve the manuscript. Some of this depends on how actively you promote the preprint by sharing on social media, disseminating to other scientists, etc. Journals also identify preprints of interest and could reach out to you about publishing with them.&lt;/p>
+&lt;p>In addition, all of our grants include statements that we will submit preprints, so if you decide you do not want to submit a preprint or a coauthor does not want to agree to this please talk to the relevant PI of any grants that have supported you.&lt;/p>
+&lt;p>There are a variety of preprint servers, but we almost universally use &lt;a href="http://biorxiv.org/" target="_blank" rel="noopener">bioRxiv&lt;/a>. It has become the standard location in the field and is run by a non-profit organization. Some journals only allow preprints posted to non-profit pre-print servers making it a good choice and it is a good player in ensuring science is available to all.&lt;/p>
+&lt;p>We typically submit the initial preprint at the same time as the initial submission of the manuscript to the journal. This will probably take 1-2 hours. To keep the preprint up to date and ensure that it satisfies funder mandates for open archiving it should be updated whenever the manuscript is resubmitted (either as part of a revision or to a new journal).&lt;/p>
+&lt;h2 id="sharing-work-on-social-media">Sharing work on social media&lt;/h2>
+&lt;p>(info to be included: tone/style; tagging institutions, co-authors, funders; figures and alt-text; links to preprint and code/data)&lt;/p>
+&lt;h2 id="dealing-with-reviews">Dealing with reviews&lt;/h2>
+&lt;p>When you get your reviews back, the next step is to figure out how to handle them. Typically reviewers will have major and minor criticisms. Your task is to sort through those criticisms and figure out a plan for addressing them. Reviewers are only human and they are not infallible. Their criticisms will fall into one of three categories: useful, neutral, and wrong. You are not required to do everything a reviewers tells you to do. Ethan and Morgan&amp;rsquo;s philosophy (which we got from our advisor) is that if it doesn&amp;rsquo;t harm the research/manuscript you do whatever a reviewer requests (i.e. everything in the neutral/good categories). If you think what the reviewer has suggested is majorly problematic, then we generally advise not doing it. In your response to the reviewers you can explain why you disagree with their suggestion/criticism. You want to choose judiciously when to stand your grand in the review process. Discussion with your co-authors/advisers is warranted.&lt;/p>
+&lt;p>When you resubmit your manuscript, you will also submit a detailed response to the reviewers. To construct this, cut and paste the reviews into a new document. Into this document you will write your response to each individual issue the reviewer brings up. Often reviewers will construct their reviews so that each paragraph is focused on a separate distinct issue, if not, you can break their paragraphs accordingly. Keep all of their comments in the document so it is clear you did not edit out any of their concerns. We find that a good starting place for your revision is sitting down with the document and thinking about how you would/should respond to each of these items and start writing in ideas/responses. Then you can use your responses as a template for making the changes in your manuscript.&lt;/p>
+&lt;p>Examples of Response to Reviewers:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/point-by-point-response.pdf">Response to reviewers&lt;/a> for &lt;a href="https://doi.org/10.1371/journal.pbio.3000125" target="_blank" rel="noopener">Yenni et al. 2019&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="response-to-editor">Response to editor&lt;/h2>
+&lt;p>When you resubmit you will also submit a cover letter to the editor. This is distinct from the detailed response to reviewers. The cover letter will consist of 2 main parts:&lt;/p>
+&lt;ul>
+&lt;li>a statement similar to the first one in your cover letter stating the name of the manuscript and the authors and that you have revised your manuscript and are resubmitting it.&lt;/li>
+&lt;li>a paragraph overviewing the changes you made in response to the reviews - in this paragraph you only really need to discuss what seem like the major concerns - especially if the editor highlighted them in their decision letter.&lt;/li>
+&lt;/ul>
+&lt;p>Examples of Resubmission letters:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/cover-letter-revision.pdf">Resubmission cover letter&lt;/a> for &lt;a href="https://doi.org/10.1371/journal.pbio.3000125" target="_blank" rel="noopener">Yenni et al. 2019&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="address-for-correspondence">Address for correspondence&lt;/h2>
+&lt;p>Use your official university address, which is currently:&lt;/p>
+&lt;p>Department of Wildlife Ecology and Conservation&lt;br>
+110 Newins-Ziegler Hall&lt;br>
+PO Box 110430&lt;br>
+Gainesville, FL 32611-0430&lt;/p>
+&lt;p>Phone: (352) 846-0643&lt;br>
+Fax: (352) 392-6984&lt;/p>
+&lt;h2 id="managing-co-authors">Managing co-authors&lt;/h2>
+&lt;p>Do not forget your co-authors through this process. You do not have to go through this on your own. They can help you brainstorm how to deal with difficult issues, help run analyses to deal with concerns, help draft language for the response letter or implement revisions to the manuscript.&lt;/p>
+&lt;p>Hopefully you have a good relationship with your co-authors and they are actively engaged, however often co-authors are more peripheral to a project (e.g., had a limited role in the analyses/manuscript). It can be easy to forget them as you manage all the moving parts of the review process. Professionally, however, you need to make sure they are OK with the manuscript during all the phases of this process. To do this we recommend following the &lt;a href="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/collaborative-writing/">Collaborative Writing Guide&lt;/a>. Regardless, you must ALWAYS have all co-authors sign off on the final version of the manuscript before submitting.&lt;/p></description></item><item><title>Revising a manuscript after review</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/manuscript-revision/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/manuscript-revision/</guid><description>&lt;h2 id="journal-decision">Journal Decision&lt;/h2>
+&lt;p>After a manuscript has gone through the review process it will be returned with a decision. These generally fall into the following categories:&lt;/p>
+&lt;ul>
+&lt;li>Accepted - The paper is accepted in it&amp;rsquo;s current form. This never happens on the first round of review.&lt;/li>
+&lt;li>Revisions requested - This generally means that the paper has a very good chance of being accepted assuming that you can successfully respond to review comments.&lt;/li>
+&lt;li>Rejected, but OK to resubmit - This is what used to be called &amp;ldquo;major revisions&amp;rdquo; and indicates that while there were meaningful concerns that may involve a significant revision the journal is definitely still interested in publishing the paper. Except in exceptional circumstances you should revise and resubmit to the same journal.&lt;/li>
+&lt;li>Rejected, without the possibility of resubmission - Very common due to journal scope, perceived importance of the paper, and artificial scarcity imposed by journals, but also due to serious concerns about methods or interpretation. Except in exceptional circumstances the next step is to submit to a different journal.&lt;/li>
+&lt;/ul>
+&lt;h2 id="actively-involve-co-authors">Actively involve co-authors&lt;/h2>
+&lt;ul>
+&lt;li>When you receive the reviews and response from the journal, forward it on to your co-authors, even if you are not yet ready to discuss how to handle the comments. If you wait, you&amp;rsquo;ll forget and then you&amp;rsquo;ll be racing a deadline to resubmit without having co-authors engaged.&lt;/li>
+&lt;li>It is encouraged to discuss the plan for responding to reviewer critiques with co-authors. Depending on the specifics of the collaboration, different approaches to this may be warranted. You may draft the response to reviewers (see below) and send them out for comments. During the drafting process you may also assign specific comments to specific co-authors if the criticism is pertinent to their role on the manuscript.&lt;/li>
+&lt;li>ALWAYS get co-authors to sign off on the final version of the response and manuscript before resubmitting.&lt;/li>
+&lt;li>ALWAYS share the good news when a manuscript is accepted. Everyone likes good news. :)&lt;/li>
+&lt;/ul>
+&lt;h2 id="revising-the-manuscript">Revising the manuscript&lt;/h2>
+&lt;p>When you get your reviews back, the next step is to figure out how to handle them. Typically reviewers will have major and minor criticisms. Your task is to sort through those criticisms and figure out a plan for addressing them. Reviewers are only human and they are not infallible. Their criticisms will fall into one of three categories: useful, neutral, and wrong. You are not required to do everything a reviewers tells you to do. Our philosophy is that we make the changes that improve the manuscript as well as any that are neutral. We try to avoid making changes that make the manuscript worse, though there are occasionally strategic tradeoffs to consider.&lt;/p>
+&lt;p>The response to review will be composed of three parts:&lt;/p>
+&lt;ol>
+&lt;li>A point by point response the reviewer comments&lt;/li>
+&lt;li>The revisions to the manuscript itself&lt;/li>
+&lt;li>A letter to the editor stating general what you&amp;rsquo;ve done&lt;/li>
+&lt;/ol>
+&lt;p>We recommend proceeding in this order. First developing a draft of the point by point response to reviewer comments and sharing and discussing it with your co-authors to get everyone on the same page about what to do in response to the reviews. Second, following the point by point document, implementing the changes to the manuscript that you have planned. Third, writing the letter to the editor.&lt;/p>
+&lt;h3 id="response-to-reviewers">Response to reviewers&lt;/h3>
+&lt;p>This is where you explain in detail the changes that you have made in response to the good and neutral comments and also why you disagree with the recommendations that you think would make the manuscript worse. It is also common for reviewers to recommend that you do some new analysis that expands the current manuscript. It is OK to explain that these kinds of expansions of the topic of the paper are out of scope for the current manuscript.&lt;/p>
+&lt;ol>
+&lt;li>Read through the reviews and then don&amp;rsquo;t work on them for a few days. This will help you respond more positively to the reviews when you revisit them.&lt;/li>
+&lt;li>Copy all of the review comments into a single document with a subsection for each reviewer and the editor if the editor provides specific comments. Keep all of their comments in the document so it is clear you did not edit out any of their concerns and reviewers and editors don&amp;rsquo;t have to jump back and forth between review and response documents to evaluate your response.&lt;/li>
+&lt;li>After each distinct comment (often reviewers will construct their reviews so that each paragraph is focused on a separate distinct issue, if not, you can break their paragraphs accordingly) write a response describing what you are going to change in the manuscript, analysis, etc. or what is wrong with the suggestion or that the change is out of scope.&lt;/li>
+&lt;/ol>
+&lt;p>Pay attention for cases where the reviewer comment itself isn&amp;rsquo;t helpful, but indicates a failure to communicate clearly in the current manuscript. In these cases you should revise the manuscript to avoid similar confusion on the part of readers.&lt;/p>
+&lt;p>Once you have drafted this, share and discuss it with your co-authors before starting the revise the manuscript itself. This will ensure that everyone agrees on how the paper will be revised (or at least that everyone has had the chance to object to your proposed approach before you do the work). To accomplish this the draft needs to include specific changes that you plan on making, not just general statements that you will make changes in response to a comment.&lt;/p>
+&lt;p>Examples of Response to Reviewers:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../point-by-point-response.pdf">Response to reviewers&lt;/a> for &lt;a href="https://doi.org/10.1371/journal.pbio.3000125" target="_blank" rel="noopener">Yenni et al. 2019&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="revisions-to-the-manuscript">Revisions to the manuscript&lt;/h3>
+&lt;p>Once everyone agrees on the general form of the response use this response document to guide the revision of the manuscript. This may include adding new analyses, changing existing analyses, modifying figures, and revising the written manuscript.&lt;/p>
+&lt;p>Most journals will require you to submit a version of the manuscript with the changes from the previous submission tracked, so make sure you are working in such a way that you can create this at the end.&lt;/p>
+&lt;h3 id="response-to-editor">Response to editor&lt;/h3>
+&lt;p>When you resubmit you will also submit a cover letter to the editor. This is distinct from the detailed response to reviewers. The cover letter will consist of 2 main parts:&lt;/p>
+&lt;ul>
+&lt;li>A statement similar to that in the cover letter from the initial submission stating the name of the manuscript and the authors and that you have revised your manuscript and are resubmitting it.&lt;/li>
+&lt;li>A paragraph providing an overview of the changes you made in response to the reviews. This paragraph should focus on the major concerns in the reviews, especially any concerns that the editor highlighted in their decision letter. This is your opportunity to briefly explain what positive changes you made in response to the review and to provide a big picture reason for the things you didn&amp;rsquo;t change. This can really set the tone for how the response to reviewers is read by the editor.&lt;/li>
+&lt;/ul>
+&lt;p>Examples of Resubmission letters:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../cover-letter-revision.pdf">Resubmission cover letter&lt;/a> for &lt;a href="https://doi.org/10.1371/journal.pbio.3000125" target="_blank" rel="noopener">Yenni et al. 2019&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Authorship</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/authorship/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/authorship/</guid><description>&lt;p>[In Progress]&lt;/p>
+&lt;p>Trying to figure out who should be an author on a project - especially one developed in a group context - can be complicated. How much involvement warrants authorship credit is not clearly defined or nor is someone&amp;rsquo;s involvement easily quantified. The Weecology Philosophy is that it is better to be inclusive than exclusive. This is because it is easy to discount people&amp;rsquo;s contributions based on internalized biases. Some of these biases are things we have from our society. Some of these biases are because we have pre-conceived notions about how difficult/important/meaningful certain contributions are. If someone has done something for a project&lt;/p></description></item><item><title>Collaborative Writing Process</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/collaborative-writing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/collaborative-writing/</guid><description>&lt;p>Almost all scientific papers now involve multiple authors.
+Therefore having processes to engage all authors and solicit feedback in ways that improve the project, support the collaborators, and minimize wasted time are important.
+Instead of working on it a manuscript on our own until you have a full draft, actively engaging collaborators early and often can lead better papers with less pain, by ensureing that everyone is on board with
+the underlying questions, methodological decisions, visualization and other aspects of the project.&lt;/p>
+&lt;p>&lt;em>Collaborative writing guidelines&lt;/em>&lt;/p>
+&lt;h2 id="step-1">Step 1&lt;/h2>
+&lt;p>Check with your adviser and collaborators to see if they agree that a set of analyses has reached that poitn that it should be written up as a paper.&lt;/p>
+&lt;h2 id="step-2">Step 2&lt;/h2>
+&lt;p>Define the knowledge gap that the paper will fill and the 2 or 3 key points that you want to communicate with the readers. This step helps engage collaborators in identifying why and where
+your work is providing a better understanding/improvement of existing knowledge gaps. Write up the knowledge gap(s) and key points as bullet points and send them to your collaborators/adviser for feedback.
+Lead a discussion to reach consensus on these ideas.&lt;/p>
+&lt;h2 id="step-3">Step 3&lt;/h2>
+&lt;p>Write a rough draft of a title and produce drafts of the key figures you envision including in the manuscript.
+Send these to your collaborators/adviser and lead a discussion to reach consensus on the title and figures to be included.
+This helps further define the paper and helps address any issues with analyses including identifying additional analyses that need to be conducted.&lt;/p>
+&lt;h2 id="step-4">Step 4&lt;/h2>
+&lt;p>Draft the Methods section and send it to your collaborators/adviser for feedback.
+While everyone often thinks they know what has been done methodologically in a collaboration, writing it down can reveal differences in understanding about what exactly was done.
+Writing and discussing this section first helps identify any analysis changes that need to be made &lt;em>before&lt;/em> a lot of time is invested in understanding the results (which could change if the analysis changes).&lt;/p>
+&lt;h2 id="step-5">Step 5&lt;/h2>
+&lt;p>Write an outline. Once everybody is on board, write an outline of the paper with each section of the paper including roughly one bullet points per paragraph.&lt;/p>
+&lt;ul>
+&lt;li>Send these to your collaborators/adviser and lead a discussion to reach consensus on the outline.
+At this point everyone will have had several opportunities to engage and come to consensus about what should be included in the paper.&lt;/li>
+&lt;/ul>
+&lt;h3 id="step-5b-optional">Step 5b (optional)&lt;/h3>
+&lt;p>At this point you can optionally expand each paragraph to sentence level bullet points, e.g., 3-4 words per bulletpoint.
+This can be very helpful and save lots of time for folks still learning to write scientific papers, because the next step then involves only expanding each bullet point into a sentence.&lt;/p>
+&lt;h2 id="step-6">Step 6&lt;/h2>
+&lt;p>Write a &lt;em>rough&lt;/em> draft of the manuscript and send it to collaboratators for &amp;ldquo;big picture&amp;rdquo; feedback.
+You can either do this a section at a time or draft the full manuscript and then send it to everyone.
+Collaborators should be encouraged to read the draft and provide big picture suggestions identifying things that are missing, any additional work that needs to be added, and areas that need major improvement in communication.
+They should not provide detailed editorial feedback at this stage.
+Ideally this phase should be focused on the writing, but it also serves as a last chance to identify important analyses that are missing or need to be changed.&lt;/p>
+&lt;h2 id="step-7">Step 7&lt;/h2>
+&lt;p>Incorporate collaborator feedback and revise the paper into a polished draft.
+Send the manuscript to co-authors for feedback communicating what you expect from collaborators at this point is mainly editorial work and signoffs on the manuscript.
+The goal of the previous steps is to ensure that no changes to the methods, figures, and questions needs to be made at this stage.
+However, if something critical is identified at this stage that could influence the conclusions of the paper, then it is still important to address it.&lt;/p></description></item><item><title>Headings</title><link>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/headings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ufhcc-bcbsr.github.io/wiki/docs/grant-writing/headings/</guid><description>&lt;h2 id="why-use-headings">Why use headings?&lt;/h2>
+&lt;p>Headings are the formal way of indicating different sections in a document.
+This applies to everything from papers written in Word or Google Docs to webpages to software documentation.&lt;/p>
+&lt;p>Proper headings are more than just visual indicators of sections.
+Using them provides:&lt;/p>
+&lt;ol>
+&lt;li>Accessibility - screen readers know about headings and how to navigate with them. This lets folks using screen readers easily navigate the document. They can&amp;rsquo;t do this using bold or capitalized text.&lt;/li>
+&lt;li>Easier navigation for everyone - as with many improvements to access headings make everyone&amp;rsquo;s life easier. Using headings makes it possible to add tables of contents and these are often auto generate by systems like Word, Google Docs, pdfs, and websites (see that nice table on contents on the right side of this webpage? That&amp;rsquo;s thanks to the headings!). This makes it much easier for everyone to navigate jump around in the document. It also lets you link directly to individual sections (e.g., to ask a collaborate to comment on a subsection of the Methods or direct users to part of a webpage)&lt;/li>
+&lt;li>It&amp;rsquo;s easier to keep consistent heading formatting. Manually formatting headings means that if you decide to change the heading style in one place you have to manually change it in all of the other places. Using proper headings let&amp;rsquo;s you just change it once and it will show up everywhere.&lt;/li>
+&lt;/ol>
+&lt;h2 id="how-to-use-headings">How to use headings?&lt;/h2>
+&lt;h3 id="google-docs">Google Docs&lt;/h3>
+&lt;h4 id="creating-a-heading">Creating a heading&lt;/h4>
+&lt;ol>
+&lt;li>In the main bar click on the dropdown that says &lt;code>Normal text&lt;/code> and select the heading level you want to use&lt;/li>
+&lt;li>Type your heading&lt;/li>
+&lt;li>Hit enter and the next line will be set back to normal text&lt;/li>
+&lt;/ol>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img src="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/headings-example-google-docs.gif" alt="Animated gif of: 1) clicking the &amp;lsquo;Normal text&amp;rsquo; dropbox in a Google Doc; 2) selecting &amp;lsquo;Heading 1&amp;rsquo;; 3) typing in the word &amp;lsquo;Introduction&amp;rsquo;; and 4) the cursor moves to the next line and the dropdown returns to displaying &amp;lsquo;Normal text&amp;rsquo; and the word &amp;lsquo;Introduction&amp;rsquo; appears in the outline bar on the left side" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>A handy way to make sure you&amp;rsquo;ve picked the right heading level is to check the outline bar to make sure your new heading is nested appropriately.&lt;/p>
+&lt;h4 id="changing-the-visual-formatting-for-a-heading">Changing the visual formatting for a heading&lt;/h4>
+&lt;ol>
+&lt;li>Highlight a heading of the level that you want to change&lt;/li>
+&lt;li>Change the format as desired by changing fonts, font sizes, bold, italics, etc.&lt;/li>
+&lt;li>Click the heading dropbox&lt;/li>
+&lt;li>Hover over the current heading level&lt;/li>
+&lt;li>Select &amp;lsquo;Update Heading to match&amp;rsquo;&lt;/li>
+&lt;/ol>
+&lt;p>
+&lt;figure >
+&lt;div class="flex justify-center ">
+&lt;div class="w-100" >&lt;img src="https://ufhcc-bcbsr.github.io/wiki/docs/publishing/change-heading-format-google-docs.gif" alt="Animated gif of: 1) highlighting the word &amp;lsquo;Introduction&amp;rsquo; in a Google Doc; 2) clicking the - sign next to the font size to decrease the size of &amp;lsquo;Introduction&amp;rsquo;; 3) selecting &amp;lsquo;Heading 1&amp;rsquo; from the main bar; 4) hovering of &amp;lsquo;Heading 1&amp;rsquo; in the list of headings; 5) selecting &amp;lsquo;Update Heading 1 to match&amp;rsquo;" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p></description></item></channel></rss>
