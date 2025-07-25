@@ -23,7 +23,7 @@ jobs:
           extended: true
       
       - name: Install Hugo modules
-      run: hugo mod get
+        run: hugo mod get
       
       - name: Build site
         run: hugo --minify
