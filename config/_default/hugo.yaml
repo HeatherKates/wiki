@@ -5,7 +5,7 @@
 
 title: 'UFHCC BCB-SR Bioinformatics Wiki' # Website name
 baseURL: 'https://ufhcc-bcbsr.github.io/wiki/' # Website URL
-publishDir: "docs"
+publishDir: "public"
 
 ############################
 ## PAGE OPTIONS
