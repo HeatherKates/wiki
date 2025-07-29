@@ -13,8 +13,6 @@ Pathway Enrichment Analysis (PEA) is a widely used method to interpret large-sca
 
 **Web Tool Summary Table**
 
-:::: {style="max-height: 600px; overflow-y: auto;"}
-::: {style="font-size: 65%; line-height: 1.1;"}
 | Tool | ORA | GSEA | Topology | GO | KEGG | Reactome | MSigDB | Other Databases |
 |--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|--------|
 | [g:Profiler](https://biit.cs.ut.ee/gprofiler/) | ✅ | 🔶 |  | ✅ | ✅ | ✅ | ✅ | TRANSFAC, miRTarBase, WikiPathways |
@@ -29,6 +27,4 @@ Pathway Enrichment Analysis (PEA) is a widely used method to interpret large-sca
 | [GSEA-MSigDB](https://www.gsea-msigdb.org/) |  | ✅ |  | ✅ | ✅ | ✅ | ✅ | Hallmark, C1–C7 collections |
 | [ExpressAnalyst](https://www.expressanalyst.ca/) | ✅ | ✅ |  | ✅ | ✅ | ✅ | ✅ | BioCarta, WikiPathways |
 | [Cytoscape EnrichMap](https://apps.cytoscape.org/apps/enrichmap) |  | ✅ |  | Any | Any | Any | Any | Visualization |
-:::
-::::
 
