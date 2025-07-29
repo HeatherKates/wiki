@@ -1,7 +1,7 @@
 ---
 title: "Differential Analysis of Omics Data"
 linkTitle: "Differential Analysis of Omics Data"
-weight: 4
+weight: 3
 summary: >
   
 ---
