@@ -13,7 +13,7 @@ sections:
       text: Collaborative documentation for how to navigate bioinformatics with the UFHCC BCB-SR (and beyond!)
       primary_action:
         text: Browse the wiki
-        url: /docs/
+        url: /wiki/
         icon: rocket-launch
     design:
       spacing:
