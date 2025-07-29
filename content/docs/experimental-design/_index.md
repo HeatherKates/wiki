@@ -1,7 +1,7 @@
 ---
 title: "Experimental Design"
 linkTitle: "Experimental Design"
-weight: 3
+weight: 2
 summary: >
   
 ---
