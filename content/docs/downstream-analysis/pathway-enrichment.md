@@ -9,6 +9,7 @@ weight: 1
 Pathway Enrichment Analysis (PEA) is a widely used method to interpret large-scale omics datasets by identifying biological pathways that are overrepresented among a list of differentially expressed genes, proteins, or other features. This page gathers presentations, tools, and readings to help you apply PEA thoughtfully and avoid common pitfalls.
 
 **BCB-SR Pathway Enrichment Analysis Presentation**
+
 [Pathway Enrichment Analysis Presentation](https://ufhcc-bcbsr.github.io/pathway-enrichment-presentation/)
 
 **Web Tool Summary Table**
