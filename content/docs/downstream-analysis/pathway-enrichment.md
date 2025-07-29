@@ -1,6 +1,6 @@
 ---
 title: "Pathway Analysis"
-linkTitle: "Pathway Analysis
+linkTitle: "Pathway Analysis"
 date: 
 summary: 
 weight: 1
