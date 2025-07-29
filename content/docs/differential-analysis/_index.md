@@ -1,7 +1,7 @@
 ---
-title: "Open Source Analysis Pipelines"
-linkTitle: "Open Source Analysis Pipelines"
-weight: 4
+title: "Omics Data Processing Pipelines"
+linkTitle: "Omics Data Processins Pipelines"
+weight: 3
 summary: >
   
 ---
