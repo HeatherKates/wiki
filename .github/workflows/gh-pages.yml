@@ -12,30 +12,24 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+      steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.134.1'
           extended: true
-      
-      - name: Install Hugo modules
-        run: hugo mod get
-
-      - name: Install Hugo modules
-        run: hugo mod get
-        
-      - name: Build site with clean slate
+      - name: Clear Hugo cache and install modules
         run: |
-          hugo mod clean --all || true
-          chmod -R 755 /tmp/hugo_cache_runner 2>/dev/null || true
-          hugo --minify
-  
+          rm -rf /tmp/hugo_cache/ || true
+          hugo mod get -u ./...
       - name: Build site
         run: hugo --minify
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
