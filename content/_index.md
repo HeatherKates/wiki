@@ -9,10 +9,10 @@ design:
 sections:
   - block: hero
     content:
-      title: UF Health Cancer Center Bioinformatics Wiki
+      title: UF Health Cancer Center Bioinformatics Hub
       text: Collaborative documentation for how to navigate bioinformatics with the UFHCC BCB-SR (and beyond!)
       primary_action:
-        text: Browse the wiki
+        text: Browse the hub
         url: /wiki/docs/
         icon: rocket-launch
     design:
@@ -32,7 +32,7 @@ sections:
 
 <button class="form-control sidebar-search js-search d-none d-md-flex">
 <i class="fas fa-search pr-2"></i>
-<span class=sidebar-search-text>Search the wiki...</span>
+<span class=sidebar-search-text>Search the hub...</span>
 <span class=sidebar-search-shortcut>/</span></button>
 
 <head> 
