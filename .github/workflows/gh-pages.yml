@@ -24,11 +24,6 @@ jobs:
       
       - name: Build site (skip modules)
         run: hugo --minify --ignoreCache
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
