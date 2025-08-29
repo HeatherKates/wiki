@@ -15,17 +15,25 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.134.2'
           extended: true
-      - name: Clear Hugo cache and install modules
+
+      - name: Clear cache and get latest modules
         run: |
-          rm -rf /tmp/hugo_cache/ || true
-          hugo mod get -u ./...
+          hugo mod get -u github.com/HugoBlox/hugo-blox-builder/modules/blox-tailwind@latest
+          hugo mod tidy
+        env:
+          HUGO_CACHEDIR: ./hugo_cache
+      
       - name: Build site
         run: hugo --minify
+        env:
+          HUGO_CACHEDIR: ./hugo_cache
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
