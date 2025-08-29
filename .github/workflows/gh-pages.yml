@@ -25,8 +25,14 @@ jobs:
       - name: Install Hugo modules
         run: hugo mod get
 
-      - name: Clear Hugo cache
-        run: hugo mod clean --all
+      - name: Install Hugo modules
+        run: hugo mod get
+        
+      - name: Build site with clean slate
+        run: |
+          hugo mod clean --all || true
+          chmod -R 755 /tmp/hugo_cache_runner 2>/dev/null || true
+          hugo --minify
   
       - name: Build site
         run: hugo --minify
