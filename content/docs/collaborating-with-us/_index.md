@@ -1,5 +1,5 @@
 ---
-title: "Collaborating With Us"
+title: "Collaborating With Us!"
 linkTitle: "Collaborating With Us"
 weight: 2
 summary: >
