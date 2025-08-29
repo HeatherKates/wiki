@@ -24,7 +24,10 @@ jobs:
       
       - name: Install Hugo modules
         run: hugo mod get
-      
+
+      - name: Clear Hugo cache
+      run: hugo mod clean --all
+  
       - name: Build site
         run: hugo --minify
 
