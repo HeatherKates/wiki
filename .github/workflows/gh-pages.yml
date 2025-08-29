@@ -21,18 +21,9 @@ jobs:
         with:
           hugo-version: '0.134.2'
           extended: true
-
-      - name: Clear cache and get latest modules
-        run: |
-          hugo mod get -u github.com/HugoBlox/hugo-blox-builder/modules/blox-tailwind@latest
-          hugo mod tidy
-        env:
-          HUGO_CACHEDIR: ./hugo_cache
       
-      - name: Build site
-        run: hugo --minify
-        env:
-          HUGO_CACHEDIR: ./hugo_cache
+      - name: Build site (skip modules)
+        run: hugo --minify --ignoreCache
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
